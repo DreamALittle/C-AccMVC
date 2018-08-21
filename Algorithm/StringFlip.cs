@@ -1,4 +1,6 @@
-//三步翻转
+//三步翻转字符串 C#代码实现
+//简单原理 字符串XY 当X`T Y`T各部分翻转 整体（X`T Y`T）`T 得到结果字符串 YX
+
 using System;
 
 namespace Algo
