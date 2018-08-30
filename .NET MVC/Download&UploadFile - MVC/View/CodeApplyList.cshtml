@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "码申请记录";
+}
+<div ng-controller="codeApplyController" id="codeApplyLay">
+    <form class="layui-form">
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <div class="overView layui-anim layui-anim-upbit" id="searchView" style="text-align:center;height:auto">
+                    <div class="layui-row">
+                        <div class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">申请日期：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="date" id="starDate" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label" style="width:35px;text-align:left">状态:</label>
+                            <div class="layui-input-block" style="margin-left:70px">
+                                <select lay-filter="funSelect">
+                                    <option value="">状态</option>
+                                    <option value="1">已申请</option>
+                                    <option value="2">TTS已审核</option>
+                                    <option value="3">已拒绝</option>
+                                    <option value="4">生成中</option>
+                                    <option value="5">可下载</option>
+                                    <option value="6">失败</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-col-md5 layui-col-xs5 layui-col-lg5 layui-col-sm5">
+                            <label class="layui-form-label">产品名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" autocomplete="off" ng-model="ProductName" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" style="margin-top:10px">
+                        <div class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">申请企业：</label>
+                            <div class="layui-input-block">
+                                <input type="text"  autocomplete="off" ng-model="CorpName" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-col-md3 layui-col-xs3 layui-col-lg3layui-col-sm3">
+                            <label class="layui-form-label">使用企业：</label>
+                            <div class="layui-input-block">
+                                <input type="text" autocomplete="off" ng-model="UserCorpName" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-col-md5 layui-col-xs5 layui-col-lg5 layui-col-sm5">
+                            <label class="layui-form-label">码规则：</label>
+                            <div class="layui-input-block">
+                                <input type="text" autocomplete="off" ng-model="CodeRuleName" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-col-md1 layui-col-xs1 layui-col-lg1 layui-col-sm1">
+                            <button class="layui-btn layui-btn-normal" data-method="search">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="maskView" id="searchViewM"></div>
+            </div>
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <button id="AddBtn" class="layui-btn layui-btn-normal" data-method="setTop" style="float:left">导出当前记录</button>
+                <button id="AddBtn" class="layui-btn layui-btn-normal" data-method="refresh" style="float:left">刷新纪录</button>
+                <button id="searchViewBtn" class="layui-btn layui-btn-sm" style="float:right">显示查询条件<img class="rotView" id="rotView" src="~/Scripts/Images/icon-down-blue.png" /></button>
+            </div>
+        </div>
+    </form>
+    <div class="layui-fluid" style="text-align:right">
+        <table id="codetb" class="layui-table" lay-filter="tb"></table>
+        <div id="laypage" style="text-align:left"></div>
+    </div>
+</div>
+<script src=@Url.Content("~/Scripts/CodeApply/CodeApplyList.js")>
+</script>
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-gb-blue layui-btn-xs" lay-event="down">下载</a>
+    <a class="layui-btn layui-bg-orange layui-btn-xs" lay-event="reset">重置</a>
+</script>
+
+@*<a class="layui-btn layui-bg-green layui-btn-xs" lay-event="audit">审核</a>*@
+

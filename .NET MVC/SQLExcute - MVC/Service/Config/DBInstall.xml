@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <User>
+    <Name Value="Acctrue">
+    </Name>
+    <PassWord Value="Acctrue">
+    </PassWord>
+  </User>
+  <AppSetting>
+    <Version Value="1.01">
+    </Version>
+  </AppSetting>
+</Root>

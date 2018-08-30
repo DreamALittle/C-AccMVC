@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "CMC码管理中心";
+}
+
+<style>
+    .layui-layout-admin .layui-body {
+        bottom: 0px;
+    }
+
+    .bg-deepBule {
+        background-color: #0b1a31;
+    }
+
+    .layui-nav-tree .layui-nav-item a:hover {
+        background-color: #0b1a31;
+    }
+
+    .layui-nav-tree .layui-nav-item .layui-nav-child a:hover {
+        background-color: #081222;
+    }
+
+    .layui-nav-tree .layui-nav-bar {
+        background-color: #0b1a31;
+    }
+
+    .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover {
+        background-color: #081222;
+        color: #1e9fff;
+    }
+
+    .layui-layout-admin .layui-logo {
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .menuImg {
+        margin-right: 10px;
+    }
+
+    .layui-nav-tree .layui-nav-child a {
+        left: 25px;
+    }
+
+    .layui-tab ul.layui-tab-title li:nth-child(1) i {
+        display: none;
+    }
+
+    .layui-bg-blue {
+        background-color: #48abfe !important;
+    }
+</style>
+<body class="layui-layout-body" ng-controller="adminController">
+    <div class="layui-layout layui-layout-admin ">
+        <div class="layui-header layui-bg-blue">
+            <div class="layui-logo">CMC 码管理中心</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img class="menuImg" src="~/Scripts/Images/icon-manager.png" style="width:20px" />
+                        用户名
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="" id="userInfo">基本资料</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="" ng-click="exit()"><img class="menuImg" src="~/Scripts/Images/icon-exit.png" style="width:20px" />退出</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side bg-deepBule">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree bg-deepBule" id="menus" lay-filter="menus">
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body" style="overflow: auto;">
+            <!-- 内容主体区域 -->
+            <div id="tabdemoid" class="layui-tab " lay-allowclose="true" lay-filter="tabs">
+                <ul class="layui-tab-title">
+                    <li class="layui-this" id="home">数据监控</li>
+                </ul>
+                <div class="layui-tab-content" style="overflow: hidden;">
+                    <div class="layui-tab-item layui-show">
+                        <div class="layui-row">
+                            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                                <div id="ApplyChart" class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6" style="height:330px;"></div>
+                                <div id="UploadChart" class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6" style="height:330px"></div>
+                            </div>
+                            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                                <div id="DownloadChart" class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6" style="height:330px;"></div>
+                                <div id="DownloadTotalChart" class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6" style="height:330px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    AppService.controller('adminController', function ($scope, $cookies, $http, requestService) {
+        layui.use(['element', 'layer'], function () {
+            var layer = layui.layer, $ = layui.jquery;
+            var element = layui.element;
+            var userId = $cookies.get('userid');
+            //重置
+            $scope.exit = function () {
+                document.cookie = "IFSignIn=LogOut; path=/";
+                window.location = "login";
+            };
+            var imgs = ['ziliaoguanli', 'xitongguanli', 'tongjibaobiao', 'zhuisumaguanli', 'danjuguanli'];
+            var data = new Array();
+            requestService.post(null, '../webapi/values/menus').then(function (response) {
+                var res = response.data;
+                if (res.status == 0) {
+                    data = JSON.parse(res.data);
+                    var cont = '';
+                    var j = 0;
+                    for (var key in data) {
+                        cont += '<li class="layui-nav-item"><a class="" href= "javascript:;"><img class="menuImg" src="../Scripts/Images/' + imgs[j] + '.png" />' + key + '<span class="layui-nav-more"></span></a><dl class="layui-nav-child">';
+                        $.each(data[key], function (i, item) {
+                            cont += '<dd><a href="javascript:;" id="' + key + '_' + i + '">' + item.MenuName + '</a></dd>';
+                        });
+                        cont += '</dl></li>';
+                        j++;
+                    }
+                    $('#menus').append(cont);
+                    CreatMenus();
+                    element.init();
+                }
+            });
+            $("#userInfo").click(function () {
+                layer.open({
+                    type: 2 //此处以iframe举例
+                    , title: '用户信息'
+                    , area: ['800px', '420px']
+                    , shade: 0.5
+                    , maxmin: true
+                    , offset: [ //为了演示，随机坐标
+                        150, $(window).width() / 2 - 400
+                    ]
+                    , content: '../user/useredit?s=1&id=' + userId
+                    , zIndex: layer.zIndex //重点1
+                });
+            });
+
+            function CreatMenus() {
+                element.on('nav(menus)', function (item) {
+                    var items = $(this).attr('id');
+                    if (items == '' || typeof (items) == "undefined") {
+                        return;
+                    }
+                    items = items.split('_');
+                    var parent = items[0];
+                    var itemId = items[1];
+                    var itemName = $(this).text();
+                    var ch = $(".layui-tab-title li[lay-id]").parent().children();
+                    var ishas = true;
+                    if (ch.length > 0) {
+                        ch.each(function () {
+                            if ($(this).text().substring(0, $(this).text().length - 1) == itemName) {
+                                ishas = false;
+                            }
+                        }
+                        )
+                    }
+                    //判断  防止重复添加  
+                    if (ishas) {
+
+                        //添加tab标签部分：
+                        var var_content = "";
+                        var h = window.innerHeight + 120;
+                        if (parent == '追溯码查询' & itemId < 3) {
+                            var_content = "<div style=\"height:" + h+ "px;\"><iframe scrolling=\"yes\" frameborder=\"0\"  src=\"" + data[parent][itemId].WebPageUrl + "\" class=\"myiframe\" scrolling=\"no\" onload=\"changeFrameHeight()\"  style=\"width:100%\"></iframe></div>";
+                        } else {
+                            var_content = "<div style=\"height:" + h + "px;\"><iframe scrolling=\"yes\" frameborder=\"0\"  src=\"" + data[parent][itemId].WebPageUrl + "\" class=\"myiframe\" scrolling=\"no\"  style=\"width:100%;height:100%\"></iframe></div>";
+                        }
+
+                        element.tabAdd('tabs', { title: itemName, content: var_content, id: items });
+                        element.tabChange('tabs', items);
+
+                        //添加日志
+                        var par = { LogMenu: "页面访问", LogAction: itemName, LogMessage: "访问" + itemName };
+                        var pars = { data: JSON.stringify(par) };
+                        requestService.log(JSON.stringify(pars));
+
+                    } //console.log(item);
+                    else {
+                        //获取焦点：
+                        element.tabChange('tabs', items);
+                    }
+                });
+            }
+        });
+    });
+
+    function changeFrameHeight() {
+        $(".myiframe").height(window.innerHeight + 120);
+    }
+    window.onresize = function () {
+        changeFrameHeight();
+    }
+
+</script>
+<script src=@Url.Content("~/Scripts/AdminDataPlot/DataPlot.js")></script>
+
+
+

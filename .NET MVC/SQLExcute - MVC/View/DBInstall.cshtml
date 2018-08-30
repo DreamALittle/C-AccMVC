@@ -1,0 +1,364 @@
+﻿@model Acctrue.CMC.Web.WebDBInstall.DBViewModel.InstallInfo
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMC数据库配置</title>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../Styles/DBInstall/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/DBInstall/default.css">
+    <link rel="stylesheet" href="../Styles/DBInstall/style.css">
+    <link rel="stylesheet" href="../Styles/DBInstall/animate.min.css">
+    <link rel="stylesheet" href="../Styles/DBInstall/materialFormStyles.css">
+    <link rel="stylesheet" type="text/css" href="../Styles/DBInstall/htmleaf-demo.css">
+    <link rel="stylesheet" href="../Styles/DBInstall/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background: url(../WebDBInstall/Pic/L.jpg);
+            background-size: cover;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="htmleaf-container">
+        <div class="container pb30">
+
+            <div class="clear-backend">
+                <div class="avatar">
+                    <div>
+                        <img src="../WebDBInstall/Pic/admin.png" alt="">
+                    </div>
+                </div>
+
+                <!-- tab-menu -->
+                <input type="radio" class="tab-1" name="tab" checked="checked">
+                <span style="font-family:'Microsoft YaHei';font-size:18px;padding-left: 60px">版本信息</span><i class="fa fa-diamond" style="padding-left: 20px;"></i>
+
+                <input type="radio" class="tab-2" name="tab">
+                <span style="font-family:'Microsoft YaHei';font-size:18px;padding-left: 60px">数据库配置</span><i class="fa fa-database" style="padding-left: 20px;"></i>
+
+                <input type="radio" class="tab-3" name="tab">
+                <span style="font-family:'Microsoft YaHei';font-size:18px;padding-left: 60px">MongoDB配置</span><i class="fa fa-eercast" style="padding-left: 20px;"></i>
+
+                <input type="radio" class="tab-4" name="tab">
+                <span style="font-family:'Microsoft YaHei';font-size:18px;padding-left: 60px">用户登录信息</span><i class="fa fa-user-circle-o" style="padding-left: 20px;"></i>
+
+                <input type="radio" class="tab-5" name="tab">
+                <span style="font-family:'Microsoft YaHei';font-size:18px;padding-left: 60px">安装</span><i class="fa fa-cloud-download" style="padding-left: 20px;"></i>
+
+                <!-- tab-top-bar -->
+                <div class="top-bar">
+                    <span style="font-family:'Microsoft YaHei';font-size:24px;float:left;">CMC 数据库配置中心</span>
+                    <ul>
+                        <li>
+                            <a href="../install/dbinstalllogin" title="Log Out">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- tab-content -->
+
+                <div class="tab-content" id="formOutterWrapper">
+                    <form id="materialForm" class="form" method="post" action="" role="form" autocomplete="off">
+                        <section class="tab-item-1">
+                            <div class="col-xs-6" style="margin-top:20px">
+                                <label class="labels active" for="firstName">数据库更新目标版本:</label>
+                                <input type="text" readonly class="formInput" id="firstName" name="firstName" data-bind="value:AppVersion" />
+                            </div>
+                            <div class="col-xs-6" style="margin-top:20px">
+                                <label class="labels active" for="firstName">数据当前使用版本:</label>
+                                <input type="text" readonly class="formInput" id="firstName" name="firstName" data-bind="value:DBVersion" />
+                            </div>
+                        </section>
+                        <section class="tab-item-2">
+                            <div class="col-xs-12" style="display:block">
+                                <span style="font-size:small;color:black">选择数据库类型:</span>
+                                <input type="radio" value="SqlServer2005" style="display:inline" data-bind="checked: DBDrive" /><span style="font-size:small;color:black">SqlServer</span>
+                                <input type="radio" value="Oracle" style="display:inline" data-bind="checked: DBDrive" /><span style="font-size:small;color:black">Oracle</span>
+                                <input type="radio" value="MySql" style="display:inline" data-bind="checked: DBDrive" /><span style="font-size:small;color:black">MySql</span>
+                            </div>
+                            <div data-bind="if: CreateNewShow" class="col-xs-12" style="display:block">
+                                <span style="font-size:small;color:black">是否创建新数据库:</span>
+                                <input type="checkbox" style="display:inline" data-bind="checked: DBCreateNew" /><span style="font-size:smaller;color:black">(勾选此项系统会尝试创建<strong style="color:red">"新"</strong>的数据库)</span>
+                            </div>
+                            <div class="col-xs-6" style="margin-top:40px">
+                                <label class="labels active" for="lastName">数据库服务地址:</label>
+                                <input type="text" class="formInput" data-bind="value:DBServer" value="1.0.2" />
+                            </div>
+                            <div class="col-xs-6" style="margin-top:40px">
+                                <label class="labels active" for="firstName">用户名:</label>
+                                <input type="text" required class="formInput" data-bind="value:DBUserID" value="1.0.1" />
+                            </div>
+                            <div class="col-xs-6">
+                                <label class="labels active" for="lastName">密码:</label>
+                                <input type="password" class="formInput" data-bind="value:DBPassWord" value="1.0.2" />
+                            </div>
+
+                            <div data-bind="if: SqlNameShow" class="col-xs-6">
+                                <label class="labels active" for="lastName">数据库名:</label>
+                                <input type="text" class="formInput" data-bind="value:DBName" />
+                            </div>
+                            <div data-bind="if: SqlVerifyShow" class="col-xs-10">
+                                <label class="labels active" for="lastName">验证方式:</label>
+                                <input type="radio" value="WINDOWS" style="display:inline" data-bind="checked: DBVerify" /><span style="font-size:small;color:black">Windows</span>
+                                <input type="radio" value="SQL" style="display:inline" data-bind="checked: DBVerify" /><span style="font-size:small;color:black">SQL Server(默认！非特殊情况请勿更改)</span>
+                            </div>
+                        </section>
+                        <section class="tab-item-3">
+                            <div class="col-xs-12" style="display:block">
+                                <span style="font-size:small;color:black">是否启用MongoDB:</span>
+                                <input type="checkbox" style="display:inline" data-bind="checked: UseMongo" /><span style="font-size:smaller;color:black">(选中启用MongoDB配置)</span>
+                            </div>
+                            <div data-bind="if: UseMongo" class="col-xs-6" style="margin-top:30px">
+                                <label class="labels active" for="lastName">Mongo服务器名称:</label>
+                                <input type="text" class="formInput" data-bind="value:MongoServer" />
+                            </div>
+                            <div data-bind="if: UseMongo" class="col-xs-6" style="margin-top:30px">
+                                <label class="labels active" for="lastName">Mongo用户名:</label>
+                                <input type="text" class="formInput" data-bind="value:MongoUserName" />
+                            </div>
+                            <div data-bind="if: UseMongo" class="col-xs-6">
+                                <label class="labels active" for="lastName">Mongo密码:</label>
+                                <input type="text" class="formInput" data-bind="value:MongoPassword" />
+                            </div>
+                            <div data-bind="if: UseMongo" class="col-xs-6">
+                                <label class="labels active" for="lastName">Mongo数据库名称:</label>
+                                <input type="text" class="formInput" data-bind="value:MongoDBName" />
+                            </div>
+                        </section>
+                        <section class="tab-item-4">
+                            <div class="col-xs-6" style="margin-top:20px">
+                                <label class="labels active" for="lastName">登录用户名:</label>
+                                <input type="text" class="formInput" data-bind="value:LoginName" />
+                            </div>
+                            <div class="col-xs-6" style="margin-top:20px">
+                                <label class="labels active" for="lastName">登录密码:</label>
+                                <input type="password" class="formInput" data-bind="value:LoginPassword" />
+                            </div>
+                        </section>
+                        <section class="tab-item-5">
+                            <div class="col-xs-12" style="display:block">
+                                <button type="button" class="btn btn-primary layui-bg-blue flatButton" data-bind="click:DBConnTest" style="margin-top:5px">数据库测试连接</button>
+                                <button type="button" class="btn btn-primary layui-bg-blue flatButton" data-bind="click:MGConnTest,visible:UseMongo" style="margin-top:5px">MongoDB测试连接</button>
+                                <button type="button" class="btn btn-primary layui-bg-blue flatButton" data-bind="click:Install,enable:CanInstall" style="margin-top:5px">安装</button><span style="font-size:x-small;color:orangered;margin-top:58px">(数据库测试通过才可安装)</span>
+                            </div>
+                            <div data-bind="visible:ConnShow" class="col-xs-6" style="margin-top:40px;display:block">
+                                <label class="labels active" for="lastName">连接中...</label>
+                            </div>
+                            <div data-bind="visible:ConnResShow" class="col-xs-12" style="position:relative;margin-top:50px;display:block">
+                                <label class="labels active" style="color:red" data-bind="text:ConnTestRes"></label>
+                            </div>
+                            <div data-bind="visible:InstallShow" class="col-xs-6" style="margin-top:25px">
+                                <label class="labels active" for="lastName">安装中...</label>
+                            </div>
+                            <div data-bind="visible:InstallResShow"  class="col-xs-12" style="position:relative;display:block;margin-top:40px">
+                                <label class="labels active" style="color:red;margin-top: 120px;" data-bind="text:InstallRes"></label>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/DBInstall/jquery-2.1.1.min.js"></script>
+    <script src="../scripts/DBInstall/boot36.js"></script>
+    <script src="../scripts/DBInstall/materialForm.js"></script>
+    <script src="../scripts/knockout-3.4.2.js"></script>
+
+    <script>
+        function ViewModel() {
+            var self = this;
+
+            self.AppVersion = "@Model.AppVersion";
+            self.DBVersion = "@Model.DBVersion";
+            self.DBDrive = ko.observable("@Model.DBDrive");
+
+            self.CreateNewShow = ko.computed(function () {
+                if (self.DBDrive() == "Oracle") {
+                    return false;
+                }
+                else {
+                    return true;
+                };
+            }, this);
+            self.SqlVerifyShow = ko.computed(function () {
+                if (self.DBDrive() == "SqlServer2005") {
+                    return true;
+                }
+                else {
+                    return false;
+                };
+            }, this);
+            self.SqlNameShow = ko.computed(function () {
+                if (self.DBDrive() == "SqlServer2005" || self.DBDrive() == "MySql") {
+                    return true;
+                }
+                else {
+                    return false;
+                };
+            }, this);
+
+            self.DBCreateNew = ko.observable(false);
+            self.DBServer = ko.observable("@Model.DBServer");
+            self.DBUserID = ko.observable("@Model.DBUserID");
+            self.DBPassWord = ko.observable("@Model.DBPassWord");
+            self.DBName = ko.observable("@Model.DBName");
+            self.DBVerify = ko.observable("SQL");
+
+            self.MongoSet = ko.observable("@Model.MongoSetting");
+            self.UseMongo = ko.computed({
+                read: function () {
+                    if ( this.MongoSet() == "False") {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                },
+                write: function (value) {
+                    if (value == true) {
+                        this.MongoSet("True");
+                    }
+                    else
+                        this.MongoSet("False");
+                },
+                owner:this
+            });
+            self.MongoServer = ko.observable("@Model.MongoServer");;
+            self.MongoUserName = ko.observable("@Model.MongoUserName");
+            self.MongoPassword = ko.observable("@Model.MongoPassword");
+            self.MongoDBName = ko.observable("@Model.MongoDBName");
+
+            self.LoginName = ko.observable("@Model.LoginUser");
+            self.LoginPassword = ko.observable("@Model.LoginPassword");
+
+            self.ConnShow = ko.observable(false);
+            self.ConnResShow = ko.observable(false);
+            self.ConnTestRes = ko.observable("");
+            self.InstallShow = ko.observable(false);
+            self.InstallResShow = ko.observable(false);
+            self.InstallRes = ko.observable("");
+
+            self.CanInstall = ko.observable(false);//测试True
+
+            //DB
+            self.DBConnTest = function () {
+                var jsData = {
+                    DBDrive: self.DBDrive(),
+                    DBCreateNew : self.DBCreateNew(),
+                    DBServer : self.DBServer(),
+                    DBUserID : self.DBUserID(),
+                    DBPassWord : self.DBPassWord(),
+                    DBName : self.DBName(),
+                    DBVerify : self.DBVerify()
+                };
+
+                //显示消息
+                self.ConnShow(true);
+                self.ConnResShow(false);
+                self.ConnTestRes("");
+
+                $.ajax({
+                    url: "../Api/DBIsntall/DBConnTest",
+                    type: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: ko.toJS(jsData)
+                }).success(function (data) {
+                    if (data == "数据库连接成功") {
+                        self.ConnShow(false);
+                        self.ConnResShow(true)
+                        self.ConnTestRes(data);
+                        self.CanInstall(true);
+                    }
+                    else {
+                        self.ConnShow(false);
+                        self.ConnResShow(true)
+                        self.ConnTestRes(data);
+                    };
+                });
+            };
+
+            //Mongo
+            self.MGConnTest = function () {
+                var jsData = {
+                    SeverIP: self.MongoServer(),
+                    User: self.MongoUserName(),
+                    Password: self.MongoPassword(),
+                    MongoDBName:self.MongoDBName()
+                };
+                self.ConnShow(true);
+                self.ConnResShow(false);
+                self.ConnTestRes("");
+                $.ajax({
+                    url: "../Api/DBIsntall/ConnTest",
+                    type: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: ko.toJS(jsData)
+                }).success(function (data) {
+                    if (data == "MongoDB连接成功") {
+                        self.ConnShow(false);
+                        self.ConnResShow(true)
+                        self.ConnTestRes(data);
+                    }
+                    else {
+                        self.ConnShow(false);
+                        self.ConnResShow(true)
+                        self.ConnTestRes(data);
+                    };
+                });
+            };
+
+            //Install
+            self.Install = function () {
+                var jsData = {
+                    DBCreateNew: self.DBCreateNew(),
+                    DBCurrentVersion: self.DBVersion,
+                    DBNewestVersion:self.AppVersion,
+                    DBDrive: self.DBDrive(),
+                    DBName: self.DBName(),
+                    LoginUName: self.LoginName(),
+                    LoginPwd:self.LoginPassword()
+                };
+
+                self.InstallShow(true);
+                self.InstallResShow(false);
+                $.ajax({
+                    url: "../Api/DBIsntall/SqlScriptExcute",
+                    type: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: ko.toJS(jsData)
+                }).success(function (data) {
+                    if (data == "执行脚本成功") {
+                        self.InstallShow(false);
+                        self.InstallResShow(true);
+                        self.InstallRes(data);
+                    }
+                    else {
+                        self.InstallShow(false);
+                        self.InstallResShow(true);
+                        self.InstallRes(data);
+                    };
+                });
+            };
+        };
+        var viewModel = new ViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+
+</body>
+</html>

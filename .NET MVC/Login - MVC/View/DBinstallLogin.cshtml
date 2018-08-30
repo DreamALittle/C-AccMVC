@@ -1,0 +1,137 @@
+﻿<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/knockout-3.4.2.js"></script>
+<link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+        body {
+            background: url(../WebDBInstall/Pic/L.jpg);
+            background-size:cover;
+        }
+        .sysTitle {
+            text-align:center;
+            margin-top: 100px;
+            color:#ffffff;
+            font-family:'Microsoft YaHei';
+            font-size:35px;
+            display:block;
+            width:100%;
+        }
+        .form-horizontal {
+            margin-top:50px;
+            background: rgba(255,255,255,0.8);
+            padding-bottom: 10px;
+            padding-top:20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .form-horizontal .heading{
+            display: block;
+            font-size: 25px;
+            font-weight: 300;
+            padding: 35px 0;
+        }
+        .form-horizontal .form-group{
+            padding: 0 40px;
+            position: relative;
+        }
+        .form-group .icon-search {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            left: 55px;
+        }
+        .form-horizontal .form-control {
+            width: 100%;
+            background: #ffffff;
+            border: none;
+            padding-left:30px;
+            box-shadow: none;
+            padding: 0 20px 0 45px;
+            height: 40px;
+            transition: all 0.3s ease 0s;
+        }
+        .form-horizontal .text {
+            text-align: center;
+            margin-left: 7px;
+            line-height: 20px;
+            padding-top: 5px;
+            text-transform: capitalize;
+        }
+        .form-horizontal .btn{
+            float:right;
+            width:100%;
+            font-size: 14px;
+            color: #fff;
+            background: #00b4ef;
+            padding: 10px 25px;
+            border: none;
+            text-transform: capitalize;
+            transition: all 0.5s ease 0s;
+        }
+</style>
+
+<div class="container">
+    <div class="row">
+        
+    </div>
+    <div class="row">
+        
+        <div style="opacity:0.8;color:black" class="col-md-offset-3 col-md-5">
+            <label class="sysTitle">数据库后台管理系统</label>
+            <form class="form-horizontal">
+                <div style="opacity:initial" class="form-group">
+                    <i class="icon-search" style="background: url(../WebDBInstall/Pic/username.png) no-repeat"></i>
+                    <input type="text" required class="form-control" placeholder="请输入用户名！" data-bind="value:account.UserName ">
+                </div>
+                <div class="form-group">
+                    <i class="icon-search" style="background: url(../WebDBInstall/Pic/pwd.png) no-repeat"></i>
+                    <input type="password" required class="form-control" placeholder="请输入密码！" data-bind="value: account.PassWord">
+                </div>
+                <div class="form-group">
+                    <div data-bind="visible:shouldShowMessage" class="form-control alert alert-danger" style="width:100%;background:#b94a48;width:100%">
+                        <label style="color:white;margin-top:10px"><strong>不好意思！</strong>你输入的用户名/密码有误</label>
+                    </div>
+                    <button type="submit" class="btn btn-default" data-bind="click:ClickSub">登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ViewModel(){
+        var self = this;
+        self.shouldShowMessage = ko.observable(false);
+        self.account = {
+            UserName : ko.observable(),
+            PassWord : ko.observable()
+        };
+
+        self.ClickSub = function () {
+            console.log(self.account.UserName());
+            if (self.account.UserName() == null || self.account.PassWord() == null) {
+
+            }
+            else {
+                $.ajax({
+                    url: 'DBInstallCheckAccount',
+                    type: 'get',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: ko.toJS(self.account)
+                }).success(self.redirect)
+                    .error(self.errorSave);
+            }
+        };
+        self.redirect = function () {
+            document.cookie = "IFDBSignIn=Yes; path=/";
+            window.location.href = "../Install/DBInstall";
+        };
+        self.errorSave = function () {
+            self.shouldShowMessage(true);
+        };
+
+    }; 
+    var viewModel =  new ViewModel();
+    ko.applyBindings(viewModel);
+</script>
