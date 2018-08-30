@@ -1,0 +1,2 @@
+sc create CMCCodeService binpath= "C:\CMCCodeService\Acctrue.CMC.CodeService.exe" depend= Tcpip 
+
