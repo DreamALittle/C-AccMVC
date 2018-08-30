@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "CodeRuleEdit";
+}
+<style>
+    .layui-table-cell {
+        overflow: visible;
+        height:26px;
+        line-height: 26px;
+        
+    }
+    .layui-table-box, .layui-table-view {
+        overflow: visible;
+    }
+    .layui-layer-page .layui-layer-content {
+        position: relative;
+        overflow: visible !important;
+    }
+    .layui-table-body {
+        overflow: visible;
+    }
+    .layui-select {
+        height: 26px;
+    }
+    .layui-unselect {
+        height: 26px;
+    }
+    .layui-form-select {
+        height: 26px;
+    }
+    .layui-input {
+        height: 28px;
+        border-width: 0px;
+    }
+    .inputLine {
+        height: 38px;
+        border-width: 1px;
+    }
+</style>
+<div class="layui-container" ng-controller="codeRuleEditController" style="height:auto">
+    <div style="height: 20px"></div>
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <form class="layui-form layui-form-pane" name="myForm">
+                <div class="layui-form-item">
+                    <div class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6">
+                        <label class="layui-form-label">码规则名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" ng-style="CodeRuleNameSt" ng-model="CodeRuleName" autocomplete="off" placeholder="请输入码规则名称" class="layui-input inputLine" maxlength="50" lay-filter="codeRuleInfo">
+                        </div>
+                    </div>
+                    <div class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6">
+                        <label class="layui-form-label">规则状态</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="RuleStatus" ng-model="RuleStatus" value="1" title="启用">
+                            <input type="radio" name="RuleStatus" ng-model="RuleStatus" value="0" title="停用" checked="">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6">
+                        <label class="layui-form-label">码长度</label>
+                        <div class="layui-input-block">
+                            <input id="CodeUpdateL" readonly type="number" name="title" ng-style="CodeLengthSt" ng-model="CodeLength" autocomplete="off" class="layui-input inputLine" max="50" min="1">
+                        </div>
+                    </div>
+                    <div class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6">
+                        <label class="layui-form-label">码生成选项</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" id="IsParseCode" name="IsParseCode" lay-skin="primary" title="追溯码">
+                            @*<input type="checkbox" id="IsMaskCode" name="IsMaskCode"  lay-skin="primary" title="防伪码">*@
+                        </div>
+                    </div>
+                </div>
+                <!--码格式设置区域-->
+                <div class="layui-form-item">
+                    <div class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6">
+                        <label class="layui-form-label">码文件网址</label>
+                        <div class="layui-input-block">
+                            <input id="CodeUrl" type="text" name="CodeUrl" ng-model="CodeUrl" autocomplete="off" placeholder="格式：www.查询.com/{0} 。{0}代表码位置" class="layui-input inputLine">
+                        </div>
+                    </div>
+                    <div class="layui-col-md6 layui-col-xs6 layui-col-lg6 layui-col-sm6">
+                        <label class="layui-form-label">单行码网址</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="LineUrl" ng-model="LineUrl" value="ADD" title="码添加网址">
+                            <input type="radio" name="LineUrl" ng-model="LineUrl" value="HIDE" title="码隐去网址" checked="">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                            <input placeholder="请输入内容" id="Description" name="Description" ng-model="descritption" class="layui-input inputLine" />
+                        </div>
+                    </div>
+                </div>             
+                <div class="layui-row layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12" >
+                    <div class="layui-col-md10 layui-col-xs10 layui-col-lg10 layui-col-sm10">
+                        <input type="radio" name="CodeRuleType" lay-filter="CodeRuleType" value="1" title="内部码段" checked>
+                        <input type="radio" name="CodeRuleType" lay-filter="CodeRuleType" value="2" title="外部码段">
+                    </div>
+                    <div class="layui-col-md2 layui-col-xs2 layui-col-lg2 layui-col-sm2" style="float:right;margin-top:5px">
+                        <button class="layui-btn  layui-btn-sm" ng-hide="isShow" type="button" ng-click="addRuleSeg()" id="addRuleSeg" name="addRuleSeg" style="float:right;text-align:right;">添加码段</button>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text" style="text-align: center;">
+                    <div class="layui-input-block">
+                        <table id="ruleSegTable" class="layui-table" lay-filter="ruleSegTable" style="border:none"></table>
+                    </div>
+                </div>
+                <div class="layui-row layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12" style="text-align: center;margin-top:3px">
+                    <div class="">
+                        <button class="layui-btn" ng-hide="isShow" ng-click="save()">保存</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script src=@Url.Content("~/Scripts/CodeRule/CodeRuleEdit.js")></script>
+
+<script type="text/html" id="bar">
+    {{# if(isReadOnly != true){ }}
+    {{# if(d.CodeRuleType==1){ }}
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="ToUp">位置↑</a>
+    <a class="layui-btn layui-btn-xs" lay-event="ToDown">位置↓</a>
+    {{# } }}
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="segConfig">配置</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    {{# } }}
+</script>
+

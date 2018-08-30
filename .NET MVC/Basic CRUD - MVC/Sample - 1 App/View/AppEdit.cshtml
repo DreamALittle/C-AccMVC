@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "AppEdit";
+}
+
+<style>
+    .layui-row {
+        padding-top: 10px;
+    }
+
+    .layui-form-label {
+        width: 100px;
+    }
+
+    .layui-input-block {
+        margin-left: 130px;
+    }
+</style>
+<div class="layui-container" ng-controller="appEidtController">
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label"><font color="red">*</font>AppID</label>
+            <div class="layui-input-block">
+                <input type="text" required name="title" ng-style="appNameSt" ng-model="appName" autocomplete="off" placeholder="AppId" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label"><font color="red">*</font>Secert</label>
+            <div class="layui-input-block">
+                <input type="text" required name="title" ng-style="secertSt" ng-model="secret" autocomplete="off" placeholder="Secert" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label"><font color="red">*</font>应用编码</label>
+            <div class="layui-input-block">
+                <input type="text" required name="title" ng-style="corpCodeSt" ng-model="corpCode" autocomplete="off" placeholder="应用编码" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label"><font color="red">*</font>应用名称</label>
+            <div class="layui-input-block">
+                <input type="text" required name="title" ng-style="corpNameSt" ng-model="corpName" autocomplete="off" placeholder="应用名称" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label">产线名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" ng-style="subCorpCodeSt" ng-model="subCorpCode" autocomplete="off" placeholder="产线名称" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row ">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label"><font color="red">*</font>加密密钥</label>
+            <div class="layui-input-block">
+                <input required type="text" name="title" ng-style="keySt" ng-model="key" autocomplete="off" placeholder="密钥" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+            <label class="layui-form-label">码申请审核</label>
+            <div class="layui-input-block">
+                <input type="radio" ng-model="autoAudit" value = "true" style="margin-top:13px"><span>自动</span>
+                <input type="radio" ng-model="autoAudit" value = "false"><span>手动</span>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12" style="text-align:center">
+            <button class="layui-btn layui-btn-sm" ng-click="save()">保存</button>
+        </div>
+    </div>
+</div>
+<script>
+    AppService.controller('appEidtController', function ($scope, $cookies, $http, requestService) {
+        var user = $cookies.get('username');
+        if (!user) {
+            //重新登陆
+        }
+
+        $scope.autoAudit = "false";
+
+        $scope.save = function () {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                 $scope.keySt=$scope.appNameSt = $scope.corpCodeSt = $scope.corpNameSt = $scope.subCorpCodeSt= { "border-color": "e6e6e6" }
+                 if ($scope.appName) {
+                     if ($scope.secret) {
+                         if ($scope.corpCode) {
+                             if ($scope.corpName) {
+                                 //if ($scope.subCorpCode) {
+                                     if ($scope.key) {
+                                         if ($scope.autoAudit == "false") {
+                                            var au = false;
+                                         }
+                                         else {
+                                            var au = true;
+                                         };
+                                         if ($.trim($scope.subCorpCode) == "" || $scope.subCorpCode == null) {
+                                             $scope.subCorpCode = "暂缺";
+                                         };
+                                         var parameter = {
+                                             "appId": $scope.appName,
+                                             "secret": $scope.secret,
+                                             "seed": $scope.key,
+                                             "corpCode": $scope.corpCode,
+                                             "corpName": $scope.corpName,
+                                             "subCorpCode": $scope.subCorpCode,
+                                             "IsAutoAudit": au
+                                         };
+                                         requestService.login({ "Data": JSON.stringify(parameter)}, '../webapi/system/Add').then(function (response) {
+                                             var res = response.data;
+                                             if (res.status == 0) {
+                                                 var index = parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+                                                 window.parent.location.reload();//刷新父页面
+                                                 parent.layer.close(index);//关闭弹出层
+                                             } else {
+                                                 layer.msg(res.message);
+                                             }
+                                         });
+                                     } else {
+                                         $scope.keySt = { "border-color": "red" }
+                                         layer.msg("请输入密钥！");
+                                     }
+                                 //} else {
+                                    // $scope.subCorpCodeSt = { "border-color": "red" }
+                                     //layer.msg("请输入工厂编码！");
+                                // }
+                             } else {
+                                 $scope.corpNameSt = { "border-color": "red" }
+                                 layer.msg("请输入所属企业名称！");
+                             }
+                         } else {
+                             $scope.corpCodeSt = { "border-color": "red" }
+                             layer.msg("请输入所属企业编码！");
+                         }
+                     } else {
+                         $scope.secertSt = { "border-color": "red" }
+                         layer.msg("请输入Secert！");
+                     }
+                } else {
+                     $scope.appNameSt = { "border-color": "red" }
+                     layer.msg("请输入应用名！");
+                }
+            });
+        };
+    });
+    layui.use('form', function () {});
+</script>

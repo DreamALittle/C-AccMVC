@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "AppInterfaceList";
+}
+<style>
+    .layui-table-cell {
+        overflow: visible;
+    }
+
+    .layui-input {
+        height: 28px;
+        border-width: 0px;
+    }
+</style>
+<div ng-controller="appConfigController" id="appConfig">
+    <div class="layui-fluid" style="text-align:right">
+        <div class="layui-row">
+            <div class="layui-col-md10 layui-col-xs10 layui-col-lg10 layui-col-sm10">
+                &nbsp;
+            </div>
+            <div class="layui-col-md2 layui-col-xs2 layui-col-lg2 layui-col-sm2">
+                
+            </div>
+        </div>
+    </div>
+    <form class="layui-form">
+        <table id="tb" class="layui-table" lay-filter="tb"></table>
+        <div id="laypage"></div>
+    </form>
+    <div class="layui-form-item" style="text-align:center">
+        <button class="layui-btn" ng-click="close()">关闭</button>
+    </div>
+</div>
+<script>
+    AppService.controller('appConfigController', function ($scope, $http, $cookies, requestService) {
+        var user = $cookies.get('username');
+        var appsettingid = GetQueryString("id");
+        var changedata = new Array();//准备更新的数据
+        //请求接口
+        requestService.post(JSON.stringify({ AppSettingID: appsettingid }), '../webapi/system/SearchAppInterFaceInfos').then(function (response) {
+            var res = response.data;
+            if (res.status == 0) {
+                createui(res.data)
+            }
+        });
+        //保存
+        $scope.close = function () {
+            var index = parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+            parent.layer.close(index);//关闭弹出层
+        };
+        function createui(tabledata) {
+            layui.use(['table','laypage', 'layer','form'], function () {
+                var table = layui.table,
+                form = layui.form,
+                laypage = layui.laypage;
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+                var vv = table.render({
+                    elem: '#tb',
+                    height: window.innerHeight-100,
+                    data: tabledata,
+                    page: {
+                        layout: ['count'],
+                    },
+                    done: function (res, curr, count) {
+                    },
+                    cols: [[ //表头
+                        { field: 'ID', title: 'ID', width: '10%' },
+                        { field: 'InterfaceFunctionName', title: '接口名称', width: "30%"},
+                        { field: 'Creater', title: '创建人', width: '30%' },
+                        {
+                            field: 'CreateDate', title: '创建时间', width: '30%', templet: function (d) {
+                                return d.CreateDate.split("T")[0];
+                            }
+                        }
+                    ]]
+                });
+            });
+        }
+    });
+</script>
+

@@ -1,0 +1,291 @@
+﻿
+@{
+    ViewBag.Title = "AppInterfaceEdit";
+}
+<style>
+    body {
+        overflow-y:auto !important;
+    }
+    .layui-table-cell {
+        overflow: visible;
+    }
+    .layui-input {
+        height:28px;
+        border-width :0px;
+    }
+    .layui-table-body {
+        overflow: hidden;
+    }
+    .layui-form-select dl {
+        max-height:150px;
+    }
+</style>
+<body style="overflow-y: auto;">
+    <div ng-controller="appConfigController" id="appConfig">
+        <form class="layui-form">
+            <table id="tb" class="layui-table" lay-filter="tb"></table>
+            <div id="laypage"></div>
+        </form>
+        <div class="layui-form-item" style="text-align:center">
+            <button class="layui-btn" data-method="getCheckData">确定</button>
+        </div>
+    </div>
+</body>
+<script>
+        AppService.controller('appConfigController', function ($scope, $http, $cookies, requestService) {
+            var user = $cookies.get('username');
+            var appsettingid = GetQueryString("id");
+            var selectdata = []; //反射接口信息
+            var changedata = new Array();//准备更新的数据
+            //计算最小行数量
+            var num = Math.floor((window.innerHeight - 150) / 38) - 2;
+            if (num < 6) {
+                num = 6;
+            }
+            //反射接口
+            requestService.post(JSON.stringify({ AppSettingID: appsettingid }), '../webapi/system/SearchInterFaces').then(function (response) {
+                var res = response.data;
+                if (res.status == 0) {
+                    selectdata = res.data;
+
+                    var arrNames = new Array();
+
+                    for (i = 0; i < res.data.length; i++) {
+                        var id = res.data.length + 1;
+                        //真实数据
+                        var data = {
+                            "AppSettingID": appsettingid,
+                            "ID": id,
+                            "InterfaceFunctionName": selectdata[i].interfacefunctionname,
+                            "Namespace": selectdata[i].namespace,
+                            "FunctionName": selectdata[i].functionname,
+                            "Creater": user,
+                            "CreateDate": new Date().Format("yyyy-MM-dd"),
+                        }
+                        arrNames.push(data);
+                        if (res.data[i].LAY_CHECKED == "Added") {
+                            arrNames[i].LAY_CHECKED = true;
+                        }
+                        else {
+                            arrNames[i].LAY_CHECKED = false;
+                        };
+                    };
+
+                    var table = createui(arrNames);
+                }
+            });
+            //请求接口
+            //requestService.post(JSON.stringify({ AppSettingID: appsettingid }), '../webapi/system/SearchAppInterFaceInfos').then(function (response) {
+            //    var res = response.data;
+            //    if (res.status == 0) {
+            //        var arrNames = new Array();
+
+            //        for (i = 0; i < res.data.length;i++) {
+            //            res.data[i].LAY_CHECKED = true;
+            //            arrNames.push(res.data[i].InterfaceFunctionName);
+            //        };
+
+            //        //加入剩余所有接口
+            //        for (j = 0; j < selectdata.length; j++) {
+            //            if (selectdata[j].interfacefunctionname == "获取应用程序接口" || selectdata[j].interfacefunctionname == "添加应用程序" ) {
+            //                continue;
+            //            };
+            //            if (arrNames.indexOf(selectdata[j].interfacefunctionname) != -1 ) {
+            //                continue;
+            //            };
+            //            var id = res.data.length+1;
+            //            //真实数据
+            //            var data = {
+            //                "AppSettingID": appsettingid,
+            //                "ID": id,
+            //                "InterfaceFunctionName": selectdata[j].interfacefunctionname,
+            //                "Namespace": selectdata[j].namespace,
+            //                "FunctionName": selectdata[j].functionname,
+            //                "Creater": user,
+            //                "CreateDate": new Date().Format("yyyy-MM-dd"),
+            //            }
+            //            res.data.push(data);
+            //        };
+            //        var table = createui(res.data);
+            //    }
+            //});
+            //保存
+            $scope.save = function (data) {
+                requestService.post(JSON.stringify(data), '../webapi/system/AddAppInterFaceInfos').then(function (response) {
+                    var res = response.data;
+                    if (res.status == 0) {
+                        var index = parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+                        parent.layer.close(index);//关闭弹出层
+                    }
+                });
+            };
+
+            function createui(tabledata) {
+                var tbren = {
+                    elem: '#tb',
+                    height: window.innerHeight - 250,
+                    data: tabledata,
+                    page: {
+                        layout: [],
+                    },
+                    done: function (res, curr, count) {
+                        count < num ? $(".layui-table-body").css("overflow-y", "auto") : $(".layui-table-body").css("overflow", "hidden")
+                    },
+                    cols: [[ //表头
+                        { type: 'checkbox', fixed: 'left' },
+                        {
+                            field: 'LAY_TABLE_INDEX', title: 'ID', width:'10%', templet: function (d) {
+                                return d.LAY_TABLE_INDEX + 1;
+                            }
+                        },
+                        {
+                            field: 'InterfaceFunctionName', width: '30%', title: '接口名称', templet: '#sel'
+                        },
+                        { field: 'Creater', title: '创建人', width: '20%' },
+                        {
+                            field: 'CreateDate', title: '创建时间', width: '40%', templet: function (d) {
+                                return d.CreateDate.split("T")[0];
+                            }
+                        }
+                        //{ title: '操作', toolbar: '#bar',width: 80 }
+                    ]]
+                };
+                if (tabledata.length < num) {
+                    tbren.height = window.innerHeight - 150;
+                } else {
+                    tbren.height = null;
+                }
+                layui.use(['table', 'laypage', 'layer', 'form'], function () {
+                    var table = layui.table,
+                        form = layui.form,
+                        laypage = layui.laypage;
+                    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+                    var vv = table.render(tbren);
+
+                    //监听工具条
+                    table.on('tool(tb)', function (obj) {
+                        var data = obj.data; //获得当前行数据
+                        var layEvent = obj.event;
+                        var tr = obj.tr; //获得当前行 tr 的DOM对象
+                        if (layEvent === 'del') { //删除
+                            removeAlert('真的删除行么', function (index) {
+                                //向服务端发送删除指令
+                                if (typeof (data.InterfaceFunctionName) === 'string') {
+                                    var parameter = { "InterfaceFunctionName": data.InterfaceFunctionName, "AppSettingID": data.AppSettingID };
+                                    requestService.post(parameter, '../webapi/system/removeappinterface').then(function (response) {
+                                        var res = response.data;
+                                        if (res.status == 0) {
+                                            obj.del();
+                                            layer.close(index);
+                                        }
+                                    });
+                                } else {
+                                    obj.del();
+                                    layer.close(index);
+                                    //删除数组元素
+                                    delete changedata[obj.LAY_TABLE_INDEX];
+                                }
+                            });
+                        }
+                    });
+
+                    var active = {
+                        setTop: function () {
+                            var olddata = table.cache["tb"];
+                            var id = 0;
+                            if (olddata.length > 0) {
+                                var obj = olddata[olddata.length - 1];
+                                if (obj.LAY_TABLE_INDEX >= 0) {
+                                    id = obj.LAY_TABLE_INDEX + 1;
+                                }
+                            }
+                            var myDate = new Date();
+                            //表格数据
+                            var data = { "AppSettingID": appsettingid, "ID": id, "InterfaceFunctionName": selectdata, "Creater": user, "CreateDate": new Date().Format("yyyy-MM-dd"), "Index": 0 };
+                            //真实数据
+                            var cdata = {
+                                "AppSettingID": appsettingid,
+                                "ID": id,
+                                "InterfaceFunctionName": selectdata[0].interfacefunctionname,
+                                "Creater": user,
+                                "Namespace": selectdata[0].namespace,
+                                "FunctionName": selectdata[0].functionname,
+                                "Creater": user,
+                                "CreateDate": "\/Date(" + Date.parse(new Date()) + "+0800)\/",
+                            }
+                            olddata.push(data);
+                            changedata[id + 'c'] = cdata;
+                            table.reload('tb', {
+                                height: olddata.length < num ? window.innerHeight - 150 : null,
+                                data: olddata,
+                                page: {
+                                    limit: olddata.length,
+                                    layout: []
+                                },
+                            });
+                            //form.render('select');
+                        },
+                        getCheckData: function () { //获取选中数据
+                            var checkStatus = table.checkStatus('tb')
+                                , data = checkStatus.data;
+                            //alert(JSON.stringify(data));
+                            if (data.length == 0) {
+                                //alert("true");
+                                var fakeData = {
+                                    "AppSettingID": appsettingid,
+                                    "ID": 0,
+                                    "InterfaceFunctionName": "",
+                                    "Namespace": "Fake",
+                                    "FunctionName": "",
+                                    "Creater": "",
+                                    "CreateDate": "",
+                                }
+                                data.push(fakeData);
+                            };
+                            $scope.save(data);
+                        }
+                    }
+                    //select事件
+                    form.on('select(funSelect)', function (data) {
+                        if (!selectdata.length) {
+                            layer.msg("未获取到接口数据");
+                            return;
+                        }
+                        var index = data.elem.id + 'c';
+                        changedata[index].interfacefunctionname = selectdata[data.elem.selectedIndex].interfacefunctionname;
+                        changedata[index].namespace = selectdata[data.elem.selectedIndex].namespace;
+                        changedata[index].functionname = selectdata[data.elem.selectedIndex].functionname;
+                        var olddata = table.cache["tb"];
+                        olddata[data.elem.id].Index = data.elem.selectedIndex;
+                    });
+                    //按钮监听
+                    $('#appConfig .layui-btn').on('click', function () {
+                        var othis = $(this), method = othis.data('method');
+                        active[method] ? active[method].call(this, othis) : '';
+                    });
+                });
+            }
+        });
+    </script>
+
+<script type="text/html" id="bar">
+       <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+   </script>
+
+<script type="text/html" id="sel">
+        {{# if(typeof(d.InterfaceFunctionName)==='string'){}}
+        {{d.InterfaceFunctionName}}
+        {{# }else{ }}
+        <select id="{{d.LAY_TABLE_INDEX}}" lay-filter="funSelect">
+            {{# for(var i = 0; i < d.InterfaceFunctionName.length; i++){ }}
+            {{# var name = d.InterfaceFunctionName[i].interfacefunctionname}}
+            {{# if(d.Index == i){ }}
+            <option value="{{name}}" selected>{{name}}</option>
+            {{# }else{}}
+            <option value="{{name}}">{{name}}</option>
+            {{# } }}
+            {{# } }}
+        </select>
+        {{# } }}
+    </script>
+

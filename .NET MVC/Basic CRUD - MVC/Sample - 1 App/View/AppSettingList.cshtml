@@ -1,0 +1,249 @@
+﻿
+@{
+    ViewBag.Title = "AppSettingList";
+}
+<div ng-controller="appSettingController" id="appConfig">
+
+    <form class="layui-form">
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <button id="AddBtn" class="layui-btn layui-btn-normal" data-method="setTop" style="float:left">添加App</button>
+                <button id="searchViewBtn" class="layui-btn layui-btn-normal" style="float:right">显示查询条件<img class="rotView" id="rotView" src="~/Scripts/Images/icon-down-blue.png" /></button>
+            </div>
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <div class="overView layui-anim layui-anim-upbit" id="searchView" style="text-align:center;top:5px;height:auto">
+                    <div class="layui-row">
+                        <div name="SearchDIV" class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">AppID:</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input" type="text" name="name" ng-model="userName" placeholder="" />
+                            </div>
+                        </div>
+                        <div name="SearchDIV" class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">应用信息:</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input" type="text" name="name" ng-model="AppName" placeholder="" />
+                            </div>
+                        </div>
+                        <div name="SearchDIV" class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">审核方式:</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input" type="text" name="name" ng-model="AppAudit" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="layui-col-md1 layui-col-xs1 layui-col-lg1 layui-col-sm1">
+                            <button class="layui-btn layui-btn-normal" data-method="search">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="maskView" id="searchViewM"></div>
+            </div>
+        </div>
+    </form>
+
+    <table id="tb" class="layui-table" lay-filter="tb"></table>
+    <div id="laypage"></div>
+</div>
+
+<script>
+    var open = true;
+    $("#searchViewBtn").click(function () {
+        if (open) {
+            $("#searchView").css("display", "block");
+            $("#searchViewM").css("display", "block");
+            $("#rotView").removeClass("rotView")
+        } else {
+            $("#searchView").css("display", "none");
+            $("#searchViewM").css("display", "none");
+            $("#rotView").addClass("rotView")
+        }
+        open = !open;
+    });
+    $("#searchViewM").click(function () {
+        $("#searchView").css("display", "none");
+        $("#searchViewM").css("display", "none");
+        open = true;
+    });
+
+    AppService.controller('appSettingController', function ($scope, $http, requestService) {
+        var pageCount = 0;
+        var curnum = 1;
+        var limitcount = 10;
+        var parame = {
+            "AppID": "",
+            "AppName": "",
+            "AppAudit":""
+        }
+        usersearch(curnum, limitcount);
+        function usersearch(curnum, limitcount) {
+            layui.use(['table','laypage', 'layer'], function () {
+                var table = layui.table,
+                laypage = layui.laypage;
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+                var index = layer.load(1, { shade: 0.2 });
+                var vv = table.render({
+                    elem: '#tb',
+                    height: window.innerHeight - 250,
+                    url: '../webapi/system/SearchSystemAppSettings',
+                    method: 'post',
+                    contentType: "application/json",
+                    where: { paramObj: JSON.stringify(parame), page: curnum, limit: limitcount },
+                    page: false, //开启分页
+                    done: function (res, curr, count) {
+                        layer.close(index);
+                        pageCount = count;
+                        laypage.render({
+                            elem: 'laypage'
+                            , count: count
+                            , curr: curnum
+                            , limit: limitcount
+                            , layout: ['prev', 'page', 'next', 'skip', 'count', 'limit']
+                            , jump: function (obj, first) {
+                                if (!first) {
+                                    curnum = obj.curr;
+                                    limitcount = obj.limit;
+                                    usersearch(curnum, limitcount);
+                                }
+                            }
+                        })
+                    },
+                    cols: [[ //表头
+                        { field: 'AppSettingID', width: "10%", title: '编号ID'},
+                        //{
+                        //    field: 'LAY_TABLE_INDEX', title: 'ID', width: "10%", templet: function (d) {
+                        //        return d.LAY_TABLE_INDEX + 1;
+                        //    }
+                        //},
+                        { field: 'AppID', width: "10%", title: 'AppID' },
+                        //{ field: 'Secret', title: 'Secret' },
+                        { field: 'CorpName', width: "25%",title: '应用名称' },
+                        { field: 'CorpCode', width: "15%",title: '应用编码'},
+                        {
+                            field: 'AppStatus', title: '状态', width: "5%", templet: function (d) {
+                                switch (d.AppStatus) {
+                                    case 0:
+                                        return '<span class="layui-badge layui-bg-blue">待审核</span>'
+                                    case 1:
+                                        return '<span class="layui-badge layui-bg-orange">未通过</span>'
+                                    default:
+                                        return '<span class="layui-badge layui-bg-green">已审核</span>'
+                                }
+                            }
+                        },
+                        {
+                            field: 'AppStatus', title: '码申请审核', width: "10%", templet: function (d) {
+                                switch (d.IsAutoAudit) {
+                                    case false:
+                                        return '<span class="layui-badge layui-bg-blue">手动</span>'
+                                    case true:
+                                        return '<span class="layui-badge layui-bg-green ">自动</span>'
+                                }
+                            }
+                        },
+                        { title: '操作', width: "20%", toolbar: '#bar'}
+                    ]]
+                });
+
+                //监听工具条
+                table.on('tool(tb)', function (obj) {
+                    var data = obj.data; //获得当前行数据
+                    var layEvent = obj.event; 
+                    var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+                    if (layEvent === 'detail') { //查看
+                        layer.open({
+                            type: 2 
+                            , title: '查看接口配置信息'
+                            , area: ['800px', '470px']
+                            , shade: 0.5
+                            , maxmin: true
+                            , offset: [
+                                $(window).height() / 2 - 300, $(window).width() / 2 - 400
+                            ]
+                            , content: 'AppInterfaceList?id=' + data.AppSettingID
+                            , zIndex: layer.zIndex //重点1
+                        });
+                    } else if (layEvent === 'del') { //删除
+                        removeAlert('真的删除么?', function (index) {
+                            var parameter = { "AppSettingID": data.AppSettingID };
+                            requestService.post(parameter, '../webapi/system/removeappsetting').then(function (response) {
+                                var res = response.data;
+                                if (res.status == 0) {
+                                    obj.del();
+                                    layer.close(index);
+                                }
+                            });
+                        });
+                    } else if (layEvent === 'edit') { 
+                        content = layer.open({
+                            type: 2
+                            , title: '编辑应用'
+                            , area: ['750px', '500px']
+                            , maxmin: true
+                            , offset: [
+                                10, $(window).width() / 2 - 400
+                            ]
+                            , content: 'AppSettingEdit?id=' + data.AppSettingID
+                            , zIndex: layer.zIndex //重点1
+                        });
+                    } else if (layEvent === 'interface') { //编辑
+                        var h =( window.innerHeight-120).toString();
+                        //do something
+                        content = layer.open({
+                            type: 2
+                            , title: '编辑接口'
+                            , area: ['100%', h+'px']
+                            , offset: [
+                                0, 0
+                            ]
+                            , content: 'AppInterfaceEdit?id=' + data.AppSettingID
+                        });
+                    } 
+                });
+
+                var active = {
+                    setTop: function () {
+                        var that = this;
+                        //多窗口模式，层叠置顶
+                        layer.open({
+                            type: 2 //此处以iframe举例
+                            , title: '添加应用'
+                            , area: ['800px', '450px']
+                            , shade: 0.5
+                            , maxmin: true
+                            , offset: [
+                                50, $(window).width() / 2 - 400
+                            ]
+                            , content: '../system/appedit'
+                            , zIndex: layer.zIndex //重点1
+                        });
+                    },
+                    search: function () {
+                        parame.AppID = $scope.userName;
+                        parame.AppName = $scope.AppName;
+                        parame.AppAudit = $scope.AppAudit;
+                        angular.element("#search").attr('disabled', true);
+                        usersearch(curnum, limitcount);
+                        $("#searchView").css("display", "none");
+                        $("#searchViewM").css("display", "none");
+                        open = true;
+                    }
+                }
+                $('#appConfig .layui-btn').on('click', function () {
+                    var othis = $(this), method = othis.data('method');
+                    active[method] ? active[method].call(this, othis) : '';
+                });
+            });
+        }
+
+    });
+</script>
+
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="interface">接口</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "CodeRuleConfigList";
+}
+
+<div ng-controller="ruleSegController" id="ruleSegConfig">
+    <form class="layui-form">
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <button id="AddBtn" class="layui-btn layui-btn-normal" data-method="addRule" style="float:left">添加码规则</button>
+                <button id="searchViewBtn" class="layui-btn layui-btn-normal" style="float:right">显示查询条件<img class="rotView" id="rotView" src="~/Scripts/Images/icon-down-blue.png" /></button>
+            </div>
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <div class="overView layui-anim layui-anim-upbit" id="searchView" style="text-align:center;top:5px;height:auto">
+                    <div class="layui-row">
+                        <div name="SearchDIV" class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">规则名称:</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input" type="text" name="name" ng-model="RuleName" placeholder="" />
+                            </div>
+                        </div>
+                        <div name="SearchDIV" class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">创建者:</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input" type="text" name="name" ng-model="Creater" placeholder="" />
+                            </div>
+                        </div>
+                        <div name="SearchDIV" class="layui-col-md3 layui-col-xs3 layui-col-lg3 layui-col-sm3">
+                            <label class="layui-form-label">码规则描述:</label>
+                            <div class="layui-input-block">
+                                <input class="layui-input" type="text" name="name" ng-model="RuleDescription" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="layui-col-md1 layui-col-xs1 layui-col-lg1 layui-col-sm1">
+                            <button class="layui-btn layui-btn-normal" data-method="search">查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="maskView" id="searchViewM"></div>
+            </div>
+        </div>
+    </form>
+ 
+    <table id="tb" class="layui-table" lay-filter="tb"></table>
+    <div id="laypage"></div>
+</div>
+
+<script src=@Url.Content("~/Scripts/CodeRule/CodeRuleList.js")></script>
+
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    {{# if(d.RuleStatus==0){ }}<a class="layui-btn layui-btn-xs layui-bg-green" lay-event="enableRule">启用</a>
+    {{# } else if(d.RuleStatus==1){ }}<a class="layui-btn  layui-btn-warm layui-btn-xs" lay-event="disabledRule">停用</a>{{#}}}
+</script>
+

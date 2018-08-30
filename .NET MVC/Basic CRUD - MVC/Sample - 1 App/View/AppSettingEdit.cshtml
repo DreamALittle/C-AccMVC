@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewBag.Title = "AppSettingEdit";
+}
+
+<style>
+    .layui-row {
+        padding-top: 10px;
+    }
+
+    .layui-form-pane .layui-form-label {
+        width: 130px;
+    }
+
+    .layui-form-pane .layui-input-block {
+        margin-left: 130px;
+    }
+</style>
+<div class="layui-container" ng-controller="appEidtController" lay-filter="lfform">
+    <form class="layui-form layui-form-pane" lay-filter="lfform">
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label"><font color="red">*</font>AppID</label>
+                <div class="layui-input-block">
+                    <input required type="text" name="title" ng-style="appNameSt" ng-model="appName" autocomplete="new-password" placeholder="AppID" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label"><font color="red">*</font>Secert</label>
+                <div class="layui-input-block">
+                    <input required type="text" name="title" ng-style="secertSt" ng-model="secret" autocomplete="off" placeholder="Secert" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label"><font color="red">*</font>应用编码</label>
+                <div class="layui-input-block">
+                    <input required type="text" ng-style="corpCodeSt" ng-model="corpCode" placeholder="应用编码" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label"><font color="red">*</font>应用名称</label>
+                <div class="layui-input-block">
+                    <input required type="text" ng-style="corpNameSt" ng-model="corpName" placeholder="应用名称" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label">产线名称</label>
+                <div class="layui-input-block">
+                    <input type="text" ng-style="suCorpCodeSt" ng-model="subCorpCode" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label"><font color="red">*</font>加密密钥</label>
+                <div class="layui-input-block">
+                    <input required type="text" ng-style="keySt" ng-model="key" autocomplete="off" placeholder="密钥" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label">码申请审核</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" name="close" lay-skin="switch" lay-filter="switchTest" lay-text="自动|手动">
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block" id="status">
+                    <input lay-filter="status" type="radio" name="status" value="2" title="启用" ng-disabled="AdminUser">
+                    <input lay-filter="status" type="radio" name="status" value="1" title="禁用" ng-disabled="AdminUser">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="layui-row">
+            <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12" style="text-align:center">
+                <button class="layui-btn layui-btn-sm" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    AppService.controller('appEidtController', function ($scope, $cookies, $http, requestService) {
+        layui.use(['form','layer'], function () { 
+            var user = $cookies.get('username');
+            var form = layui.form,
+                layer = layui.layer;
+
+            if (isAdministrator(user)) {
+                $scope.AdminUser = false;
+            } else {
+                $scope.AdminUser = true;
+            }
+
+            var autoAudit = false;
+            var appSettingId = parseInt(GetQueryString("id"))
+            var status = 0;
+
+            requestService.post(appSettingId, '../webapi/system/SearchSystemAppSetting').then(function (response) {
+                var res = response.data;
+                if (res.status == 0) {
+                    var data = res.data;
+                    $scope.appName = data.AppID;
+                    $scope.key = data.Seed;
+                    $scope.corpCode = data.CorpCode;
+                    $scope.corpName = data.CorpName;
+                    if (data.SubCorpCode == "暂缺") {
+                        $scope.subCorpCode = ""
+                    }
+                    else {
+                        $scope.subCorpCode = data.SubCorpCode;
+                    };
+                    $scope.secret = data.Secret;
+                    status = data.AppStatus;
+                    autoAudit = data.IsAutoAudit;
+
+                    console.log(data.IsAutoAudit);
+                    form.val("lfform", {
+                        "status": data.AppStatus.toString(),
+                        "close":data.IsAutoAudit
+                    })
+
+                }
+            });
+
+            $scope.save = function () {
+               $scope.keySt = $scope.appNameSt = $scope.secretSt = $scope.corpCodeSt = $scope.corpNameSt = $scope.suCorpCodeSt= { "border-color": "e6e6e6" }
+               if ($scope.appName) {
+                   if ($scope.secret) {
+                       if ($scope.corpCode) {
+                           if ($scope.corpName) {
+                               //if ($scope.suCorpCode) {
+                                   if ($.trim($scope.subCorpCode) == "" || $scope.subCorpCode == null) {
+                                       $scope.subCorpCode = "暂缺";
+                                   };
+                                   if ($scope.key) {
+                                       var data = {
+                                           "appSettingId": appSettingId,
+                                           "appId": $scope.appName,
+                                           "secret": $scope.secret,
+                                           "seed": $scope.key,
+                                           "corpCode": $scope.corpCode,
+                                           "corpName": $scope.corpName,
+                                           "subCorpCode": $scope.subCorpCode,
+                                           "AppStatus": parseInt(status),
+                                           "IsAutoAudit": autoAudit,
+                                       };
+                                       //console.log("!!!!!");
+                                       //console.log(autoAudit);
+                                       var parameter = {
+                                           "UserName": user,
+                                           "Data": JSON.stringify(data)
+                                       };
+                                       requestService.post(parameter, '../webapi/system/Update').then(function (response) {
+                                           var res = response.data;
+                                           if (res.status == 0) {
+                                               var index = parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+                                               window.parent.location.reload();//刷新父页面
+                                               parent.layer.close(index);//关闭弹出层
+                                           } else {
+                                               layer.msg(res.message);
+                                           }
+                                       });
+                                   } else {
+                                       $scope.key = { "border-color": "red" }
+                                       layer.msg("请输入密钥！");
+                                   }
+                               //} else {
+                                   //$scope.suCorpCodeSt = { "border-color": "red" }
+                                   //layer.msg("请输入工厂编码！");
+                               //}
+                           } else {
+                               $scope.corpNameSt = { "border-color": "red" }
+                               layer.msg("请输入所属企业名称！");
+                           }
+                       } else {
+                           $scope.corpCodeSt = { "border-color": "red" }
+                           layer.msg("请输入所属企业编码！");
+                       }
+                   } else {
+                       $scope.secertSt = { "border-color": "red" }
+                       layer.msg("请输入Secert！");
+                   }
+               } else {
+                      $scope.appNameSt = { "border-color": "red" }
+                      layer.msg("请输入应用名！");
+                    }
+            };
+            form.on('radio(status)', function (data) {
+                status = data.value;
+            });
+            form.on('switch(switchTest)', function (data) {
+                if (this.checked) {
+                    autoAudit = true;
+                }
+                else {
+                    autoAudit = false;
+                }
+            });
+        });
+    });
+</script>
