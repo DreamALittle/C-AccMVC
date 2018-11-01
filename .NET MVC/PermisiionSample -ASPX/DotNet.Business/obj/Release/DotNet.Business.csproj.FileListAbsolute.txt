@@ -9,3 +9,16 @@ F:\权限管理-JiRi\DotNet.CommonV3.7_20120724\DotNet.Business\bin\Release\zh-C
 F:\权限管理-JiRi\DotNet.CommonV3.7_20120724\DotNet.Business\obj\Release\ResolveAssemblyReference.cache
 F:\权限管理-JiRi\DotNet.CommonV3.7_20120724\DotNet.Business\obj\Release\DotNet.Business.dll
 F:\权限管理-JiRi\DotNet.CommonV3.7_20120724\DotNet.Business\obj\Release\DotNet.Business.pdb
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\DotNet.Business.dll
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\DotNet.Business.pdb
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\DotNet.Utilities.dll
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\NPOI.dll
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\ChnCharInfo.dll
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\DotNet.Utilities.pdb
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\ChnCharInfo.xml
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\bin\Release\zh-CN\ChnCharInfo.resources.dll
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\obj\Release\DotNet.Business.csprojAssemblyReference.cache
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\obj\Release\DotNet.Business.csproj.CoreCompileInputs.cache
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\obj\Release\DotNet.Business.csproj.CopyComplete
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\obj\Release\DotNet.Business.dll
+E:\FEIQ\C-AccMVC\.NET MVC\PermisiionSample -ASPX\DotNet.Business\obj\Release\DotNet.Business.pdb

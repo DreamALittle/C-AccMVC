@@ -63,33 +63,33 @@ namespace DotNet.WinForm
             BaseSystemInfo.WebHostUrl = ConfigurationManager.AppSettings["WebHostUrl"];
 
             // 这里检查是否有外部用户名密码传输进来过
-            if (args.Length > 0)
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    if (args[i].ToString().StartsWith("UserName"))
-                    {
-                        BaseSystemInfo.CurrentUserName = args[i].ToString().Substring("UserName".Length + 1);
-                    }
-                    else if (args[i].ToString().StartsWith("Password"))
-                    {
-                        BaseSystemInfo.CurrentPassword = args[i].ToString().Substring("Password".Length + 1);
-                        if (BaseSystemInfo.ClientEncryptPassword)
-                        {
-                            BaseSystemInfo.CurrentPassword = SecretUtil.Encrypt(BaseSystemInfo.CurrentPassword);
-                        }
-                    }
-                    // Console.WriteLine(i.ToString() + ":" + args[i].ToString());
-                }
-            }
+            //if (args.Length > 0)
+            //{
+            //    for (int i = 0; i < args.Length; i++)
+            //    {
+            //        if (args[i].ToString().StartsWith("UserName"))
+            //        {
+            //            BaseSystemInfo.CurrentUserName = args[i].ToString().Substring("UserName".Length + 1);
+            //        }
+            //        else if (args[i].ToString().StartsWith("Password"))
+            //        {
+            //            BaseSystemInfo.CurrentPassword = args[i].ToString().Substring("Password".Length + 1);
+            //            if (BaseSystemInfo.ClientEncryptPassword)
+            //            {
+            //                BaseSystemInfo.CurrentPassword = SecretUtil.Encrypt(BaseSystemInfo.CurrentPassword);
+            //            }
+            //        }
+            //        // Console.WriteLine(i.ToString() + ":" + args[i].ToString());
+            //    }
+            //}
 
-            if (BaseSystemInfo.MultiLanguage)
-            {
-                // 多语言国际化加载
-                ResourceManagerWrapper.Instance.LoadResources(Path.Combine(Application.StartupPath, "Resources/Localization/"));
-                // 从当前指定的语言包读取信息
-                AppMessage.GetLanguageResource();
-            }
+            //if (BaseSystemInfo.MultiLanguage)
+            //{
+            //    // 多语言国际化加载
+            //    ResourceManagerWrapper.Instance.LoadResources(Path.Combine(Application.StartupPath, "Resources/Localization/"));
+            //    // 从当前指定的语言包读取信息
+            //    AppMessage.GetLanguageResource();
+            //}
 
             // 初始化服务
             DotNetService.Instance.InitService();

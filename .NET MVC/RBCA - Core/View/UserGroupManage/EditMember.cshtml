@@ -1,0 +1,123 @@
+﻿<div ng-controller="RoleUserController" style="height: 100%">
+    <div class="dHead" style="margin-top:5px">
+        <a class="layui-btn layui-btn-warm layui-btn-sm layui-btn-xstree" ng-click="getCheckData();" style="margin-left:5px">保存修改</a>
+        @*<a class="layui-btn layui-btn-warm layui-btn-sm layui-btn-xstree" ng-click="openAll()">全部展开或折叠</a>*@
+    </div>
+    <div class="dBody" style="margin-top:5px">
+        <table class="layui-hidden" id="treeTable" lay-filter="treeTable"></table>
+    </div>
+</div>
+
+<script>
+    AppService.controller('RoleUserController', function ($scope, $cookies, $http, requestService) {
+        var editObj = null, ptable = null, treeGrid = null, tableId = 'treeTable', layer = null;
+        layui.config({
+            base: '../Scripts/Controller/'
+        }).extend({
+            treeGrid: 'treeGridBack'
+        }).use(['jquery', 'treeGrid', 'layer'], function () {
+            var $ = layui.jquery;
+            treeGrid = layui.treeGrid;
+            layer = layui.layer;
+            ptable = treeGrid.render({
+                id: tableId
+                , elem: '#' + tableId
+                , url: '../webapi/Permission/GetRoleUser?Name=' + $cookies.get('username') + "&" + 'RoleID=' + GetQueryString('ID')
+                , method: 'get'
+                , cellMinWidth: 100
+                , idField: 'UserID'//必須字段
+                , treeId: 'UserID'//树形id字段名称
+                , treeUpId: 'UserCode'//树形父id字段名称
+                , treeShowName: 'UserName'//以树形式显示的字段
+                , heightRemove: [".dHead", 10]
+                , height: '100%'
+                , isFilter: false
+                , iconOpen: false//是否显示图标【默认显示】
+                , isOpenDefault: false//节点默认是展开还是折叠【默认展开】
+                , loading: true
+                , cols: [[
+                      { type: 'checkbox', sort: true }
+                    , { field: 'UserName', title: '用户名' }
+                ]]
+                , isPage: false
+                , parseData: function (res) {//数据加载后回调
+                    console.log(res);
+                    return res;
+                }
+                , onClickRow: function (index, o) {
+                    //console.log(index, o, "单击！");
+                }
+                , onDblClickRow: function (index, o) {
+                   // console.log(index, o, "双击");
+                }
+            });
+
+            treeGrid.on('tool(' + tableId + ')', function (obj) {
+                if (obj.event === 'del') {//删除行
+                    del(obj);
+                } else if (obj.event === "add") {//添加行
+                    $scope.add(obj);
+                } else if (obj.event === "edit") { //编辑行
+                    edit(obj)
+                };
+            });
+        });
+
+
+        $scope.openorclose=function (){
+            var map = treeGrid.getDataMap(tableId);
+            var o = map['102'];
+            treeGrid.treeNodeOpen(tableId, o, !o[treeGrid.config.cols.isOpen]);
+        }
+
+
+        $scope.openAll=function () {
+            var treedata = treeGrid.getDataTreeList(tableId);
+            treeGrid.treeOpenAll(tableId, !treedata[0][treeGrid.config.cols.isOpen]);
+        }
+
+        $scope.getCheckData=function() {
+            var checkStatus = treeGrid.checkStatus(tableId);
+            var data = checkStatus.data;
+            console.log(data);
+            //layer.alert(JSON.stringify(data));
+
+            var ID = GetQueryString('ID');
+            var index = layer.load(1, { shade: 0.2 });
+            requestService.post({ data: JSON.stringify(data), Page: ID }, '../webapi/Permission/SaveUsers').then(function (response) {
+                layer.close(index);
+
+                if (response.data == "当前登录用户无权限访问该功能") {
+                    layer.msg("当前登录用户无权限访问该功能");
+                } else if (response.data == "Yes") {
+                    layer.msg("保存成功！", {
+                        time: 5000
+                    });
+                }
+                else {
+                    layer.msg(response.data, {
+                        time: 5000
+                    });
+                };
+            });
+
+        }
+
+        $scope.reload=function () {
+            $("#refreshPage").click();
+        }
+
+        function query() {
+            treeGrid.query(tableId, {
+                where: {
+                    name: 'sdfsdfsdf'
+                }
+            });
+        }
+
+        function test() {
+            console.log(treeGrid.cache[tableId], treeGrid.getClass(tableId));
+        }
+    });
+</script>
+

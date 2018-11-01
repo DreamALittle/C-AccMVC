@@ -96,10 +96,10 @@ namespace DotNet.Utilities
                 return true;
             }
             // 调用服务器的用户名、密码都对了，才可以调用服务程序，否则认为是非授权的操作
-            if (ServiceUserName.Equals(userInfo.ServiceUserName) && ServicePassword.Equals(userInfo.ServicePassword))
-            {
-                return true;
-            }
+            //if (ServiceUserName.Equals(userInfo.ServiceUserName) && ServicePassword.Equals(userInfo.ServicePassword))
+            //{
+            //    return true;
+            //}
             return false;
         }
     }

@@ -1,0 +1,61 @@
+﻿
+<div class="layui-container">
+    <div class="layui-row">
+
+        <fieldset class="layui-elem-field layui-field-title"><legend> 权限树</legend></fieldset>
+
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-form-label">普通操作</div>
+                <div class="layui-form-block">
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="getMaxDept('#LAY-auth-tree-index')">获取树的深度</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="checkAll('#LAY-auth-tree-index')">全选</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="uncheckAll('#LAY-auth-tree-index')">全不选</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="showAll('#LAY-auth-tree-index')">全部展开</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="closeAll('#LAY-auth-tree-index')">全部隐藏</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="getNodeStatus('#LAY-auth-tree-index')">获取节点状态</button>
+                </div>
+            </div>
+        </div>
+
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色名称</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" name="name" placeholder="请输入角色名称" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择权限</label>
+                <div class="layui-input-block">
+                    <div id="LAY-auth-tree-index"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="submit" lay-submit lay-filter="LAY-auth-tree-submit">提交</button>
+                    <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    layui.config({
+        base: '../Scripts/Controller/',
+    }).extend({
+        authtree: 'authtree',
+    });
+
+    layui.use(['jquery', 'authtree', 'form'], function () {
+        var $ = layui.jquery;
+        var authtree = layui.authtree;
+        var form = layui.form;
+
+    });
+</script>

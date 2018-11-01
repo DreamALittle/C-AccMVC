@@ -1,0 +1,116 @@
+﻿
+<style>
+    .layui-form-pane .layui-form-radio {
+        margin-left: 5px;
+    }
+</style>
+
+<div class="layui-container" ng-controller="userEditController">
+    <div style="height:20px"></div>
+
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                    <label class="layui-form-label"><font color="red">*</font>角色名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" required ng-model="RoleName" autocomplete="off"  class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12" id="">
+                    <label class="layui-form-label">状态：</label>
+                    <div class="layui-input-block" id="status">
+                        <input  type="radio" id="active" name="status" title="启用" checked="checked"/>
+                        <input  type="radio" name="status"  title="停用" />
+                    </div>
+                </div>
+            </div>
+                
+            <div class="layui-form-item">
+                <div class="layui-col-md12 layui-col-xs12 layui-col-lg12 layui-col-sm12">
+                    <label class="layui-form-label">所有者：</label>
+                    <div class="layui-input-block">
+                        <select size=3 id="UserSelected" lay-search="" ng-model="Selected" ng-options='x for x in SysUsers'>
+                            <option value="">直接选择或搜索选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="text-align:center">
+                <button class="layui-btn"  ng-click="save()">保存</button>
+            </div>
+        </form>
+</div>
+
+<script>
+    AppService.controller('userEditController', function ($scope, $cookies, $http, requestService) {
+
+        var creator = $cookies.get('username');
+
+        var parame = {
+            "UserName": creator,
+            "UserStatus": 0
+        }
+
+        //先获取后台用户数据，指派所有者
+        function GetUsers() {
+            requestService.post({ data: JSON.stringify(parame), page: 0, limit: 100 }, '../webapi/user/searchusers').then(function (response) {
+                var res = response.data;
+                var data = res.data;
+                for (var i = 0; i < data.length; i++) {
+                    $scope.SysUsers.push("用户名:"+data[i].UserName + ":  ID:" + data[i].UserId);
+                }
+                layui.use(['form'], function () {
+                    var form = layui.form;
+                    form.render();
+                });
+            });
+        };
+
+        $scope.SysUsers = new Array();
+        GetUsers();
+
+        //点击保存按钮
+        $scope.save = function () {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+
+                if ($scope.RoleName) {
+                    var OwnerInfo = $("#UserSelected option:selected").text();
+                    if (OwnerInfo == "直接选择或搜索选择"){
+                        layer.msg("请输选择角色所有者！", { offset: [150] });
+                    }
+                    else {
+                        var parameter = {
+                            "RoleName": $scope.RoleName,
+                            "RoleStatus": angular.element("#active").attr('checked') ? 1 : 0,
+                            "Owner":OwnerInfo.split(":")[1],
+                            "OwnerID":parseInt(OwnerInfo.split(":")[3]),
+                            "Creator": creator
+                        };
+
+                        requestService.login(parameter, '../webapi/Role/AddNewRole').then(function (response) {
+                            var res = response;
+                            if (res.data == "当前登录用户无权限访问该功能") {
+                                layer.msg("当前登录用户无权限访问该功能");
+                            }else if (res.data =="OK") {
+                                var index = parent.layer.getFrameIndex(window.name);//获取当前弹出层的层级
+                                window.parent.location.reload();//刷新父页面
+                                parent.layer.close(index);//关闭弹出层
+                            } else {
+                                layer.msg(res);
+                            }
+                        });
+                    };
+                }
+                else {
+                    layer.msg("请输角色名称！", { offset: [150] });
+                };
+            }); 
+        };
+    });
+
+</script>
