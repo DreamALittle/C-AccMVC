@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <item>
+    <entrance_url>http://www.rufengda.com</entrance_url>
+    <encoding>uft-8</encoding>
+    <ignore_urls>
+      <url></url>
+    </ignore_urls>
+  </item>
+</items>

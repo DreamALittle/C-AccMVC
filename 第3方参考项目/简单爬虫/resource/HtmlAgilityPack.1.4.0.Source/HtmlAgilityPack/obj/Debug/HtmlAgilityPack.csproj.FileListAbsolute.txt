@@ -1,0 +1,6 @@
+D:\workspace\www.rufengda.com\WebResourceInspector\resource\HtmlAgilityPack.1.4.0.Source\HtmlAgilityPack\bin\Debug\HtmlAgilityPack.XML
+D:\workspace\www.rufengda.com\WebResourceInspector\resource\HtmlAgilityPack.1.4.0.Source\HtmlAgilityPack\bin\Debug\HtmlAgilityPack.dll
+D:\workspace\www.rufengda.com\WebResourceInspector\resource\HtmlAgilityPack.1.4.0.Source\HtmlAgilityPack\bin\Debug\HtmlAgilityPack.pdb
+D:\workspace\www.rufengda.com\WebResourceInspector\resource\HtmlAgilityPack.1.4.0.Source\HtmlAgilityPack\obj\Debug\ResolveAssemblyReference.cache
+D:\workspace\www.rufengda.com\WebResourceInspector\resource\HtmlAgilityPack.1.4.0.Source\HtmlAgilityPack\obj\Debug\HtmlAgilityPack.dll
+D:\workspace\www.rufengda.com\WebResourceInspector\resource\HtmlAgilityPack.1.4.0.Source\HtmlAgilityPack\obj\Debug\HtmlAgilityPack.pdb
