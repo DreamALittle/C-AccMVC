@@ -1,0 +1,11 @@
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\bin\Debug\WebResourceInspector.exe.config
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\obj\x86\Debug\WebResourceInspector.exe
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\bin\Debug\WebResourceInspector.exe
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\bin\Debug\WebResourceInspector.pdb
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\bin\Debug\HtmlAgilityPack.dll
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\bin\Debug\log4net.dll
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\workspace\www.rufengda.com\WebResourceInspector\WebResourceInspector\obj\x86\Debug\WebResourceInspector.pdb
+C:\Users\Administrator\Desktop\WebResourceInspector\WebResourceInspector\bin\Debug\WebResourceInspector.exe.config
+C:\Users\Administrator\Desktop\WebResourceInspector\WebResourceInspector\obj\x86\Debug\WebResourceInspector.exe
+C:\Users\Administrator\Desktop\WebResourceInspector\WebResourceInspector\obj\x86\Debug\WebResourceInspector.pdb
