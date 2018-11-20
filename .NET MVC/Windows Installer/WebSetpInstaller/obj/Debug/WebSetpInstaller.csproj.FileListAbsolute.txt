@@ -1,0 +1,5 @@
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\bin\Debug\WebSetpInstaller.dll
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\bin\Debug\WebSetpInstaller.pdb
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\obj\Debug\WebSetpInstaller.dll
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\obj\Debug\WebSetpInstaller.pdb
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\obj\Debug\WebSetpInstaller.csprojResolveAssemblyReference.cache

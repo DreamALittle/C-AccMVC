@@ -1,0 +1,4 @@
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\bin\Release\WebSetpInstaller.dll
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\bin\Release\WebSetpInstaller.pdb
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\obj\Release\WebSetpInstaller.dll
+E:\acctrueTTS4.5\SourceCode\WebSetpInstaller\obj\Release\WebSetpInstaller.pdb

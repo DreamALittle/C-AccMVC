@@ -1,0 +1,4 @@
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Release\Acctrue.TTS.ServiceInstaller.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Release\Acctrue.TTS.ServiceInstaller.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\obj\Release\Acctrue.TTS.ServiceInstaller.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\obj\Release\Acctrue.TTS.ServiceInstaller.pdb

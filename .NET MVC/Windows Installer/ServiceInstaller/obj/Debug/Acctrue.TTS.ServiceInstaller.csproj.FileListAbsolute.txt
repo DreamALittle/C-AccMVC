@@ -1,0 +1,16 @@
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.ServiceInstaller.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.ServiceInstaller.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.Configuration.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.Core.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.LAC.Core.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.Library.Data.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.XML.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.Util.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Newtonsoft.Json.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.Configuration.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.Core.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.XML.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\bin\Debug\Acctrue.TTS.Util.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\obj\Debug\Acctrue.TTS.ServiceInstaller.dll
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\obj\Debug\Acctrue.TTS.ServiceInstaller.pdb
+E:\acctrueTTS4.5\SourceCode\Acctrue.TTS.ServiceInstaller\obj\Debug\Acctrue.TTS.ServiceInstaller.csprojResolveAssemblyReference.cache
