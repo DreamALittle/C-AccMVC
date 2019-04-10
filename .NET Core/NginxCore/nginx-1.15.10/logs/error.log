@@ -1,0 +1,21 @@
+2019/04/01 19:13:53 [emerg] 4952#13912: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/01 19:13:57 [emerg] 3280#15100: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/01 19:13:58 [emerg] 7608#10856: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/01 19:14:00 [emerg] 11676#6948: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/01 19:14:06 [emerg] 2688#9100: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/01 19:16:04 [emerg] 15056#9484: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/01 19:18:55 [emerg] 8928#944: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/02 09:38:20 [emerg] 14560#8576: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/02 09:47:17 [emerg] 8204#6460: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/02 09:48:21 [emerg] 3724#12416: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2019/04/02 09:52:12 [error] 9744#12836: *1 CreateFile() "E:\SelfPro\NginxCore\nginx-1.15.10/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8098", referrer: "http://localhost:8098/"
+2019/04/02 10:18:21 [emerg] 8016#2524: unexpected "}" in E:\SelfPro\NginxCore\nginx-1.15.10/conf/nginx.conf:37
+2019/04/02 10:19:44 [emerg] 7304#1904: invalid host in upstream "localhost/Hr" in E:\SelfPro\NginxCore\nginx-1.15.10/conf/nginx.conf:36
+2019/04/02 10:20:17 [emerg] 13780#1224: invalid host in upstream "localhost/80" in E:\SelfPro\NginxCore\nginx-1.15.10/conf/nginx.conf:36
+2019/04/02 10:20:59 [emerg] 9356#15212: invalid host in upstream "localhost:80/Hr" in E:\SelfPro\NginxCore\nginx-1.15.10/conf/nginx.conf:36
+2019/04/02 10:21:53 [emerg] 196#14444: invalid host in upstream "localhost:80/Hr" in E:\SelfPro\NginxCore\nginx-1.15.10/conf/nginx.conf:36
+2019/04/02 10:23:52 [emerg] 2804#2080: invalid host in upstream "127.0.0.1:80/Hr" in E:\SelfPro\NginxCore\nginx-1.15.10/conf/nginx.conf:36
+2019/04/02 10:24:27 [notice] 9268#13632: signal process started
+2019/04/02 10:25:26 [notice] 11720#13956: signal process started
+2019/04/02 14:33:29 [notice] 6660#11432: signal process started
+2019/04/02 17:51:29 [notice] 12588#4888: signal process started

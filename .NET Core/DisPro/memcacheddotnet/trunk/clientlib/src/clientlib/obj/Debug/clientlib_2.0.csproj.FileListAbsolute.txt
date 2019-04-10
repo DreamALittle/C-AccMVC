@@ -1,0 +1,10 @@
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\bin\2.0\Debug\Memcached.ClientLibrary.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\bin\2.0\Debug\Memcached.ClientLibrary.pdb
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\bin\2.0\Debug\Commons.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\bin\2.0\Debug\ICSharpCode.SharpZipLib.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\bin\2.0\Debug\log4net.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\obj\Debug\clientlib_2.0.csprojResolveAssemblyReference.cache
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\obj\Debug\Memcached.ClientLibrary.StringMessages.resources
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\obj\Debug\clientlib_2.0.csproj.GenerateResource.Cache
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\obj\Debug\Memcached.ClientLibrary.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\clientlib\obj\Debug\Memcached.ClientLibrary.pdb

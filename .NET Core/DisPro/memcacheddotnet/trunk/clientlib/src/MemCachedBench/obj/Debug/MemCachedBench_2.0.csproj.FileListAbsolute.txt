@@ -1,0 +1,10 @@
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\MemcachedBench.exe.config
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\obj\Debug\MemcachedBench.exe
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\obj\Debug\MemcachedBench.pdb
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\MemcachedBench.exe
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\MemcachedBench.pdb
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\log4net.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\Memcached.ClientLibrary.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\ICSharpCode.SharpZipLib.dll
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\bin\2.0\Debug\Memcached.ClientLibrary.pdb
+E:\SelfPro\DisPro\memcacheddotnet\trunk\clientlib\src\MemCachedBench\obj\Debug\MemCachedBench_2.0.csprojResolveAssemblyReference.cache

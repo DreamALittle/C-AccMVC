@@ -1,0 +1,11 @@
+E:\SelfPro\DisPro\DisMongo\bin\Debug\netcoreapp2.2\DisMongo.deps.json
+E:\SelfPro\DisPro\DisMongo\bin\Debug\netcoreapp2.2\DisMongo.runtimeconfig.json
+E:\SelfPro\DisPro\DisMongo\bin\Debug\netcoreapp2.2\DisMongo.runtimeconfig.dev.json
+E:\SelfPro\DisPro\DisMongo\bin\Debug\netcoreapp2.2\DisMongo.dll
+E:\SelfPro\DisPro\DisMongo\obj\Debug\netcoreapp2.2\DisMongo.csprojAssemblyReference.cache
+E:\SelfPro\DisPro\DisMongo\obj\Debug\netcoreapp2.2\DisMongo.csproj.CoreCompileInputs.cache
+E:\SelfPro\DisPro\DisMongo\obj\Debug\netcoreapp2.2\DisMongo.AssemblyInfoInputs.cache
+E:\SelfPro\DisPro\DisMongo\obj\Debug\netcoreapp2.2\DisMongo.AssemblyInfo.cs
+E:\SelfPro\DisPro\DisMongo\bin\Debug\netcoreapp2.2\DisMongo.pdb
+E:\SelfPro\DisPro\DisMongo\obj\Debug\netcoreapp2.2\DisMongo.dll
+E:\SelfPro\DisPro\DisMongo\obj\Debug\netcoreapp2.2\DisMongo.pdb

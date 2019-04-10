@@ -1,0 +1,22 @@
+﻿@using Stimulsoft.Report.Mvc
+
+@{
+    ViewData["Title"] = "UserReport";
+}
+
+<form action="UserVi">
+    <input type="text" id="Name" />
+    <button id="subbtn"></button>
+</form>
+
+
+@Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
+    {
+        Actions =
+        {
+            GetReport = "UserReport",
+            ViewerEvent = "ViewerEvent",
+            Interaction ="ViewerInteraction"
+        }
+
+    })

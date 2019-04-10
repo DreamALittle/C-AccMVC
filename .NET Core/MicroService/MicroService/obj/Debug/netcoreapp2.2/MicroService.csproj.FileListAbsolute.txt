@@ -1,0 +1,14 @@
+E:\SelfPro\MicroService\MicroService\bin\Debug\netcoreapp2.2\MicroService.deps.json
+E:\SelfPro\MicroService\MicroService\bin\Debug\netcoreapp2.2\MicroService.runtimeconfig.json
+E:\SelfPro\MicroService\MicroService\bin\Debug\netcoreapp2.2\MicroService.runtimeconfig.dev.json
+E:\SelfPro\MicroService\MicroService\bin\Debug\netcoreapp2.2\MicroService.dll
+E:\SelfPro\MicroService\MicroService\bin\Debug\netcoreapp2.2\MicroService.pdb
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.csprojAssemblyReference.cache
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.csproj.CoreCompileInputs.cache
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.RazorAssemblyInfo.cache
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.RazorAssemblyInfo.cs
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.AssemblyInfoInputs.cache
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.AssemblyInfo.cs
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.RazorTargetAssemblyInfo.cache
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.dll
+E:\SelfPro\MicroService\MicroService\obj\Debug\netcoreapp2.2\MicroService.pdb

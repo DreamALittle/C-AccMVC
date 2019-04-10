@@ -1,0 +1,15 @@
+﻿@using Stimulsoft.Report.Mvc
+
+@{
+    ViewData["Title"] = "Report";
+}
+
+@Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
+    {
+        Actions =
+        {
+            GetReport = "AboutReport",
+            ViewerEvent = "ViewerEvent"
+        }
+        
+    })

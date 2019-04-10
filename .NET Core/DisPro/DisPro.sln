@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisPro", "DisPro\DisPro.csproj", "{A54FB3DA-D774-4BED-831E-78FCF2AFFE6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisMongo", "DisMongo\DisMongo.csproj", "{537153ED-E5CF-4939-8B40-6E59E17470E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A54FB3DA-D774-4BED-831E-78FCF2AFFE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54FB3DA-D774-4BED-831E-78FCF2AFFE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54FB3DA-D774-4BED-831E-78FCF2AFFE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54FB3DA-D774-4BED-831E-78FCF2AFFE6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537153ED-E5CF-4939-8B40-6E59E17470E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537153ED-E5CF-4939-8B40-6E59E17470E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537153ED-E5CF-4939-8B40-6E59E17470E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537153ED-E5CF-4939-8B40-6E59E17470E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69F5C5C7-7EA5-4DE6-8DB7-7DBE1111BE2F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="1">
+      <CrProduct Ref="2" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>CrProduct</Alias>
+        <BusinessObjects isList="true" count="1">
+          <CrCorp Ref="3" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+            <Alias>CrCorp</Alias>
+            <BusinessObjects isList="true" count="0" />
+            <Category />
+            <Columns isList="true" count="3">
+              <value>CorpID,System.Int32</value>
+              <value>CorpName,System.String</value>
+              <value>ProductID,System.Int32</value>
+            </Columns>
+            <Dictionary isRef="1" />
+            <Guid>f3d3bb9ffefe491b9c33a0115ffa6256</Guid>
+            <Name>CrCorp</Name>
+          </CrCorp>
+        </BusinessObjects>
+        <Category />
+        <Columns isList="true" count="3">
+          <value>ProductID,System.Int32</value>
+          <value>ProductName,System.String</value>
+          <value>Price,System.Int32</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>7a76b87a5d6a48e69010e7a95b5d25c5</Guid>
+        <Name>CrProduct</Name>
+      </CrProduct>
+    </BusinessObjects>
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>b5cb4b1b00224cd7b4f9dcf7bb6a09ab</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <ReportTitleBand1 Ref="5" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,0.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="6" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,19,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>企业产品表</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitleBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </ReportTitleBand1>
+        <CrossTab1 Ref="7" type="Stimulsoft.Report.CrossTab.StiCrossTab" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid>7a76b87a5d6a48e69010e7a95b5d25c5</BusinessObjectGuid>
+          <ClientRectangle>0,2,19,2.8</ClientRectangle>
+          <Components isList="true" count="8">
+            <CrossTab1_ColTotal1 Ref="8" type="CrossColumnTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>3.65,0.45,0,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>723cf562b73e49b9854df643804d9d52</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_ColTotal1</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_ColTotal1>
+            <CrossTab1_RowTotal1 Ref="9" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,1.3,1.6,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>85df533b75254186ad5b315c6e85c44a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal1</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal1>
+            <CrossTab1_Row1_Title Ref="10" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0,0.65,2,0.6</ClientRectangle>
+              <Font>Arial,10</Font>
+              <Guid>92c6e5628db6406780d384daa6d96848</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Row1_Title</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>企业</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>Row:CrossTab1_Row1</TypeOfComponent>
+            </CrossTab1_Row1_Title>
+            <CrossTab1_LeftTitle Ref="11" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0,0,2,0.6</ClientRectangle>
+              <Font>Arial,10</Font>
+              <Guid>7aed5b9e059d412eb6b102bf54b84efe</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_LeftTitle</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>企业产品</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>LeftTitle</TypeOfComponent>
+            </CrossTab1_LeftTitle>
+            <CrossTab1_RightTitle Ref="12" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>2.05,0,2.4,0.6</ClientRectangle>
+              <Font>Arial,10</Font>
+              <Guid>fadd67020c8a41ee836af4fe8ff53359</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RightTitle</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>产品</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>RightTitle</TypeOfComponent>
+            </CrossTab1_RightTitle>
+            <CrossTab1_Row1 Ref="13" type="CrossRow" isKey="true">
+              <Alias>CorpName</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0,1.3,2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{CrProduct.CrCorp.CorpName}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>fb020a8aae5b4d29b44b092ccf655c96</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Row1</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>CorpName</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>85df533b75254186ad5b315c6e85c44a</TotalGuid>
+              <Value>{CrProduct.CrCorp.CorpName}</Value>
+            </CrossTab1_Row1>
+            <CrossTab1_Column1 Ref="14" type="CrossColumn" isKey="true">
+              <Alias>ProductName</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>2.05,0.65,2.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{CrProduct.ProductName}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>5c9ef73e3bf049ee848f8b8a8bea2021</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Column1</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>ProductName</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>723cf562b73e49b9854df643804d9d52</TotalGuid>
+              <Value>{CrProduct.ProductName}</Value>
+            </CrossTab1_Column1>
+            <CrossTab1_Sum1 Ref="15" type="CrossSummary" isKey="true">
+              <Alias>Price</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>2.05,1.3,2.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>ef3cb0335a66477c8759357f6dc7d55e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_Sum1</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>0</Text>
+              <TextBrush>Black</TextBrush>
+              <Value>{CrProduct.Price}</Value>
+            </CrossTab1_Sum1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName />
+          <EmptyValue />
+          <Filters isList="true" count="0" />
+          <Name>CrossTab1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </CrossTab1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8feb1de745ba4df9a6576234ceede6d2</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>3/18/2019 11:50:13 AM</ReportChanged>
+  <ReportCreated>3/18/2019 11:43:12 AM</ReportCreated>
+  <ReportGuid>d0faf5cc5f12438cbaab3b71d95f505e</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2019.2.1.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

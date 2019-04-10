@@ -1,0 +1,15 @@
+networks:
+  default:
+    external:
+      name: nat
+services:
+  microservice:
+    build:
+      context: E:\SelfPro\MicroService
+      dockerfile: MicroService\Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: microservice
+    ports:
+    - target: 80
+version: '3.4'

@@ -1,0 +1,11 @@
+E:\SelfPro\DisPro\DisPro\bin\Debug\netcoreapp2.2\DisPro.deps.json
+E:\SelfPro\DisPro\DisPro\bin\Debug\netcoreapp2.2\DisPro.runtimeconfig.json
+E:\SelfPro\DisPro\DisPro\bin\Debug\netcoreapp2.2\DisPro.runtimeconfig.dev.json
+E:\SelfPro\DisPro\DisPro\bin\Debug\netcoreapp2.2\DisPro.dll
+E:\SelfPro\DisPro\DisPro\obj\Debug\netcoreapp2.2\DisPro.csprojAssemblyReference.cache
+E:\SelfPro\DisPro\DisPro\obj\Debug\netcoreapp2.2\DisPro.csproj.CoreCompileInputs.cache
+E:\SelfPro\DisPro\DisPro\obj\Debug\netcoreapp2.2\DisPro.AssemblyInfoInputs.cache
+E:\SelfPro\DisPro\DisPro\obj\Debug\netcoreapp2.2\DisPro.AssemblyInfo.cs
+E:\SelfPro\DisPro\DisPro\bin\Debug\netcoreapp2.2\DisPro.pdb
+E:\SelfPro\DisPro\DisPro\obj\Debug\netcoreapp2.2\DisPro.dll
+E:\SelfPro\DisPro\DisPro\obj\Debug\netcoreapp2.2\DisPro.pdb

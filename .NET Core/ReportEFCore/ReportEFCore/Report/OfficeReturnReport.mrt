@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="1">
+      <Ticket Ref="2" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>Ticket</Alias>
+        <BusinessObjects isList="true" count="2">
+          <Product Ref="3" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+            <Alias>Product</Alias>
+            <BusinessObjects isList="true" count="0" />
+            <Category />
+            <Columns isList="true" count="3">
+              <value>ProductID,System.Int32</value>
+              <value>ProductName,System.String</value>
+              <value>Package,System.String</value>
+            </Columns>
+            <Dictionary isRef="1" />
+            <Guid>f6e6300c6cac4b5485ee6c912cdcc5ab</Guid>
+            <Name>Product</Name>
+          </Product>
+          <IssuerArea Ref="4" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+            <Alias>IssuerArea</Alias>
+            <BusinessObjects isList="true" count="0" />
+            <Category />
+            <Columns isList="true" count="3">
+              <value>IssuerID,System.String</value>
+              <value>IssuerParentArea,System.String</value>
+              <value>IssuerParentName,System.String</value>
+            </Columns>
+            <Dictionary isRef="1" />
+            <Guid>623bd93f98c04b7b8ffb2c6cbfbc0a2c</Guid>
+            <Name>IssuerArea</Name>
+          </IssuerArea>
+        </BusinessObjects>
+        <Category />
+        <Columns isList="true" count="9">
+          <value>TicketDate,System.DateTime</value>
+          <value>TicketLevel,System.String</value>
+          <value>IssuerID,System.Int32</value>
+          <value>Issuer,System.String</value>
+          <value>ReceiverID,System.Int32</value>
+          <value>Receiver,System.String</value>
+          <value>ProductID,System.Int32</value>
+          <value>ProductQuantity,System.Int32</value>
+          <value>Commnet,System.String</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>757c2399cb274d4f913793784ecd00ec</Guid>
+        <Name>Ticket</Name>
+      </Ticket>
+    </BusinessObjects>
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>920a3bf9c3114ac2a4ebe9d43c6e3f82</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <ReportTitleBand1 Ref="6" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,57,0.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="7" type="Text" isKey="true">
+              <AutoWidth>True</AutoWidth>
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0,31.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <GrowToHeight>True</GrowToHeight>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <OnlyText>True</OnlyText>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>办事处各层级赠饮品退货明细表
+</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitleBand1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </ReportTitleBand1>
+        <CrossTab1 Ref="8" type="Stimulsoft.Report.CrossTab.StiCrossTab" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid>757c2399cb274d4f913793784ecd00ec</BusinessObjectGuid>
+          <ClientRectangle>0,2.2,38,6.8</ClientRectangle>
+          <Components isList="true" count="26">
+            <CrossTab1_ColTotal1 Ref="9" type="CrossColumnTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>12.45,0.45,0,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>1a9e6cbd2cca4afda89014bba717e794</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_ColTotal1</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_ColTotal1>
+            <CrossTab1_RowTotal1 Ref="10" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>0,1.9,12,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>5526b7996c194726a24bf212b927c366</Guid>
+              <Margins>0,0,4,0</Margins>
+              <Name>CrossTab1_RowTotal1</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>合计</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </CrossTab1_RowTotal1>
+            <CrossTab1_Row1_Title Ref="11" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>51cf24e7b62144a68ebabc53670ce64e</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row1_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>退货日期</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>Row:CrossTab1_Row1</TypeOfComponent>
+            </CrossTab1_Row1_Title>
+            <CrossTab1_LeftTitle Ref="12" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0,0,12,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>42417ae3c6c54d259446d5e5cfb6f829</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>0,1</MinSize>
+              <Name>CrossTab1_LeftTitle</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>单据信息</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TypeOfComponent>LeftTitle</TypeOfComponent>
+            </CrossTab1_LeftTitle>
+            <CrossTab1_RowTotal2 Ref="13" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>1.6,1.9,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>b98d272ca75b4567bceab7bd1aea82c9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal2</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal2>
+            <CrossTab1_Row2_Title Ref="14" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>1.6,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>bca423bdbe044374b9d31ad03d8dc458</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row2_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>区域</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>Row:CrossTab1_Row2</TypeOfComponent>
+            </CrossTab1_Row2_Title>
+            <CrossTab1_RowTotal3 Ref="15" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>4,1.9,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>c0f6367bb5f746d99db9bd4263f04248</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal3</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal3>
+            <CrossTab1_Row3_Title Ref="16" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>4,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>8ab1552e6b7b4d249fd7cf8c764fc6f7</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row3_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>办事处</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>Row:CrossTab1_Row3</TypeOfComponent>
+            </CrossTab1_Row3_Title>
+            <CrossTab1_RowTotal4 Ref="17" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>6.6,1.9,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>ea6d1fc9b7314011ad01ee33e0cbb248</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal4</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal4>
+            <CrossTab1_Row4_Title Ref="18" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>6.6,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>7312950e8dd24c3280874ac119bda36f</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row4_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>层级</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TypeOfComponent>Row:CrossTab1_Row4</TypeOfComponent>
+            </CrossTab1_Row4_Title>
+            <CrossTab1_RowTotal5 Ref="19" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>8.2,1.9,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>9bee3e1bab584c188958988e7b1ce3b1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal5</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal5>
+            <CrossTab1_Row5_Title Ref="20" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>8.2,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>693ac4129abc4b0b8c1c0aa4323e2271</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row5_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>退货人</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TypeOfComponent>Row:CrossTab1_Row5</TypeOfComponent>
+            </CrossTab1_Row5_Title>
+            <CrossTab1_RowTotal6 Ref="21" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>9.4,1.9,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>fbb180900a4840adbe3d81f8a48031b4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal6</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal6>
+            <CrossTab1_Row6_Title Ref="22" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>9.4,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>db4d681efc1543138fb0d938a3e0cd4b</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row6_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>收货人</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TypeOfComponent>Row:CrossTab1_Row6</TypeOfComponent>
+            </CrossTab1_Row6_Title>
+            <CrossTab1_RowTotal7 Ref="23" type="CrossRowTotal" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>10.6,1.9,0,0</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>b765b5bd09854878b9faacbb56a59408</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>CrossTab1_RowTotal7</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>Total</Text>
+              <TextBrush>Black</TextBrush>
+            </CrossTab1_RowTotal7>
+            <CrossTab1_Row7_Title Ref="24" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>10.6,0.65,4,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>4772ac72a6c840f69d549753b06c21a9</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Row7_Title</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>备注</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TypeOfComponent>Row:CrossTab1_Row7</TypeOfComponent>
+            </CrossTab1_Row7_Title>
+            <CrossTab1_RightTitle Ref="25" type="CrossTitle" isKey="true">
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>12.05,0,3,1</ClientRectangle>
+              <Font>Arial,8</Font>
+              <Guid>f1a37c031f5848679f0533ebe8ef6a4d</Guid>
+              <Margins>0,0,4,0</Margins>
+              <MinSize>0,1</MinSize>
+              <Name>CrossTab1_RightTitle</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>品类规格及发货数量</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <Type>Expression</Type>
+              <TypeOfComponent>RightTitle</TypeOfComponent>
+            </CrossTab1_RightTitle>
+            <CrossTab1_Row1 Ref="26" type="CrossRow" isKey="true">
+              <Alias>TicketDate</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.TicketDate}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>dfdcc5725d7a4f6f92d114715262ed4f</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row1</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>TicketDate</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>5526b7996c194726a24bf212b927c366</TotalGuid>
+              <Value>{Ticket.TicketDate}</Value>
+            </CrossTab1_Row1>
+            <CrossTab1_Row2 Ref="27" type="CrossRow" isKey="true">
+              <Alias>IssuerParentArea</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>1.6,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.IssuerArea.IssuerParentArea}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>8ad9de9dfa2f46ea8df1feb948121ef7</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row2</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>IssuerParentArea</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>b98d272ca75b4567bceab7bd1aea82c9</TotalGuid>
+              <Value>{Ticket.IssuerArea.IssuerParentArea}</Value>
+            </CrossTab1_Row2>
+            <CrossTab1_Row3 Ref="28" type="CrossRow" isKey="true">
+              <Alias>IssuerParentName</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>4,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.IssuerArea.IssuerParentName}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>10b76050c3194f129f69158fd507cf89</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row3</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>IssuerParentName</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>c0f6367bb5f746d99db9bd4263f04248</TotalGuid>
+              <Value>{Ticket.IssuerArea.IssuerParentName}</Value>
+            </CrossTab1_Row3>
+            <CrossTab1_Row4 Ref="29" type="CrossRow" isKey="true">
+              <Alias>TicketLevel</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>6.6,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.TicketLevel}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>ffd245422af74a579f279b2dc057dbca</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row4</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>TicketLevel</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>ea6d1fc9b7314011ad01ee33e0cbb248</TotalGuid>
+              <Value>{Ticket.TicketLevel}</Value>
+            </CrossTab1_Row4>
+            <CrossTab1_Row5 Ref="30" type="CrossRow" isKey="true">
+              <Alias>Issuer</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>8.2,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.Issuer}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>28cdddb5a8604fe0919f3a5268e52b4f</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row5</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>Issuer</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>9bee3e1bab584c188958988e7b1ce3b1</TotalGuid>
+              <Value>{Ticket.Issuer}</Value>
+            </CrossTab1_Row5>
+            <CrossTab1_Row6 Ref="31" type="CrossRow" isKey="true">
+              <Alias>Receiver</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>9.4,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.Receiver}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>9dac3b9dbb574d26a3e3db81ebb54f70</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row6</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>Receiver</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>fbb180900a4840adbe3d81f8a48031b4</TotalGuid>
+              <Value>{Ticket.Receiver}</Value>
+            </CrossTab1_Row6>
+            <CrossTab1_Row7 Ref="32" type="CrossRow" isKey="true">
+              <Alias>Commnet</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>10.6,1.3,3,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.Commnet}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>3de5f04080ea46dc891701c52b709382</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MergeHeaders>False</MergeHeaders>
+              <MinSize>3,1</MinSize>
+              <Name>CrossTab1_Row7</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>Commnet</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>b765b5bd09854878b9faacbb56a59408</TotalGuid>
+              <Value>{Ticket.Commnet}</Value>
+            </CrossTab1_Row7>
+            <CrossTab1_Column1 Ref="33" type="CrossColumn" isKey="true">
+              <Alias>ProductName</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>12.05,0.65,4,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DisplayValue>{Ticket.Product.ProductName}</DisplayValue>
+              <Font>Arial,8</Font>
+              <Guid>d8ee257a27634b0bbe388d817cd45b15</Guid>
+              <Margins>4,4,4,4</Margins>
+              <MinSize>4,1</MinSize>
+              <Name>CrossTab1_Column1</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <ShowTotal>False</ShowTotal>
+              <Text>ProductName</Text>
+              <TextBrush>[105:105:105]</TextBrush>
+              <TotalGuid>1a9e6cbd2cca4afda89014bba717e794</TotalGuid>
+              <Value>{Ticket.Product.ProductName}</Value>
+            </CrossTab1_Column1>
+            <CrossTab1_Sum1 Ref="34" type="CrossSummary" isKey="true">
+              <Alias>ProductQuantity</Alias>
+              <Border>All;[155:155:155];1;Solid;False;4;Black</Border>
+              <Brush>[255:255:255]</Brush>
+              <ClientRectangle>12.05,1.3,3,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>c6f3f2cefe664d87a15aed25f03c5031</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,4,0</Margins>
+              <Name>CrossTab1_Sum1</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Restrictions>AllowMove, AllowResize, AllowSelect, AllowChange</Restrictions>
+              <Text>0</Text>
+              <TextBrush>Black</TextBrush>
+              <Value>{Ticket.ProductQuantity}</Value>
+            </CrossTab1_Sum1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName />
+          <DataSourceName />
+          <EmptyValue />
+          <Filters isList="true" count="0" />
+          <HorAlignment>Left</HorAlignment>
+          <KeepCrossTabTogether>True</KeepCrossTabTogether>
+          <Name>CrossTab1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </CrossTab1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>897fbac5b86c4540af426ad2b4d95e36</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <SegmentPerWidth>3</SegmentPerWidth>
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>3/22/2019 3:45:00 PM</ReportChanged>
+  <ReportCreated>3/20/2019 11:24:04 AM</ReportCreated>
+  <ReportFile>E:\SelfPro\ReportEFCore\ReportEFCore\Report\OfficeReturnReport.mrt</ReportFile>
+  <ReportGuid>05b38c22a90c41ada644f36e5f6f7590</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2019.2.1.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

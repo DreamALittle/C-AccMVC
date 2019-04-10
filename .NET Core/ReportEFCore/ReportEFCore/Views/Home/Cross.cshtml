@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "CrossReport";
+}
+
+<div style="margin-top:10px;margin-bottom:10px;white-space:nowrap">
+    <span>开始日期：</span><input id="DateFrom" type="datetime-local" name="DateFrom" />
+    <span>结束日期：</span><input id="DateTo" type="datetime-local" name="DateTo" />
+    <span>区域：</span><input id="Area" type="text" name="Area" />
+    <span>办事处：</span><input id="Office" type="text" name="Office" />
+    <span>产品：</span><input id="Product" type="text" name="Product" />
+    <button id="subBtn" type="submit">提交</button>
+</div>
+
+<div id="CrTab">
+    @Html.Partial("CrossPartial")
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#subBtn").click(function () {
+        var postData = JSON.stringify({
+            'DateFrom':$("#DateFrom").val(),
+            'DateTo': $("#DateTo").val(),
+            'Area': $("#Area").val(),
+            'Office': $("#Office").val(),
+            'Product': $("#Product").val()
+        });
+
+        $.ajax({
+            url: "/Home/CrossPartial",
+            type: "post",
+            contentType: "application/json; charset=utf-8",
+            data: postData,
+            dataType:"html",
+            success: function (datas) {
+                console.log(datas);
+                    $("#CrTab").html(datas);
+            }
+        })
+    });
+</script>
